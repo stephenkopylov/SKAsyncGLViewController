@@ -1,0 +1,10 @@
+PODS:
+  - RDRIntermediateTarget (0.0.1)
+
+DEPENDENCIES:
+  - RDRIntermediateTarget
+
+SPEC CHECKSUMS:
+  RDRIntermediateTarget: 745364d1a90a3635431775b88d69d1207aaeaa6f
+
+COCOAPODS: 0.39.0
