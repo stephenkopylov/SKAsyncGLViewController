@@ -3,7 +3,7 @@ SKAsyncGLViewController - replacement for classical GLKit stack (GLKView + GLKVi
 
 It renders all your stuff in background GCD-thread and shows result on main thread.
 
-!Now it uses only OpenGLES2
+**Now it uses only OpenGLES2**
 
 ![Screenshot](misc/demo.gif)
 
