@@ -1,6 +1,9 @@
 # SKAsyncGLViewController
 SKAsyncGLViewController - replacement for classical GLKit stack (GLKView + GLKViewController). 
+
 It renders all your stuff in background GCD-thread and shows result on main thread.
+
+**Now it uses only OpenGLES2**
 
 ![Screenshot](misc/demo.gif)
 
@@ -21,13 +24,17 @@ After installation, inherit your viewController from SKAsyncGLViewController and
 
 - **- (void)setupGL:(SKAsyncGLViewController *)viewController** 
 
-:wrench: This one for setup your GL - create buffers/loading shaders/etc here.
+:wrench: This one for setup your GL - create buffers/load shaders/etc here.
 - **- (void)drawGL:(CGRect)rect**
 
 :black_nib: :pencil2: Here you draws all your stuff!
 - **- (void)clearGL:(SKAsyncGLViewController *)viewController**
 
 :x: This method calls when your vc's view removes from superview. So here you have to clear all your gl stuff (delete buffers .etc)
+
+
+You can access framebuffer, renderbuffer and background queue through view's properties.
+
 
 
 ### License
