@@ -9,8 +9,8 @@
 #import "SKAsyncGLView.h"
 
 @interface SKAsyncGLView ()
-@property (nonatomic, strong) EAGLContext *mainContext;
-@property (nonatomic, strong) EAGLContext *renderContext;
+@property (nonatomic) BOOL contextsCreated;
+@property (nonatomic) BOOL buffersCreated;
 @property (nonatomic, getter = isRenderable) BOOL renderable;
 @property (nonatomic) BOOL rendering;
 @property (nonatomic) BOOL removing;
@@ -29,15 +29,30 @@
     self = [super init];
     
     if ( self ) {
+        _contextsCreated = NO;
+        _buffersCreated = NO;
+        
         self.renderQueue = dispatch_queue_create("Render-Queue", DISPATCH_QUEUE_SERIAL);
         
         ((CAEAGLLayer *)self.layer).opaque = NO;
         ((CAEAGLLayer *)self.layer).contentsScale = [UIScreen mainScreen].scale;
-        
-        [self createContexts];
     }
     
     return self;
+}
+
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if ( !_contextsCreated ) {
+        _contextsCreated = YES;
+        [self createContexts];
+    }
+    if(_buffersCreated){
+        [self.mainContext renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer *)self.layer];
+    }
 }
 
 
@@ -61,6 +76,8 @@
     glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
     
     [self.mainContext renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer *)self.layer];
+    
+    _buffersCreated = YES;
     
     dispatch_async(self.renderQueue, ^{
         [EAGLContext setCurrentContext:self.renderContext];
@@ -131,7 +148,7 @@
             [_delegate drawInRect:rect];
         }
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_sync(dispatch_get_main_queue(), ^{
             if ( !self.renderable ) {
                 return;
             }

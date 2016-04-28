@@ -26,6 +26,8 @@
 @property (nonatomic, strong) dispatch_queue_t renderQueue;
 @property (nonatomic) GLuint renderbuffer;
 @property (nonatomic) GLuint framebuffer;
+@property (nonatomic, strong) EAGLContext *mainContext;
+@property (nonatomic, strong) EAGLContext *renderContext;
 
 @property (nonatomic, weak) id<SKAsyncGLViewDelegate> delegate;
 
