@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A00F00F1CD0C26700DF53D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A00F00E1CD0C26700DF53D2 /* main.m */; };
+		6A00F0121CD0C26700DF53D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A00F0111CD0C26700DF53D2 /* AppDelegate.m */; };
+		6A00F0151CD0C26700DF53D2 /* CubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A00F0141CD0C26700DF53D2 /* CubeViewController.m */; };
+		6A00F0181CD0C26700DF53D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A00F0161CD0C26700DF53D2 /* Main.storyboard */; };
+		6A00F01A1CD0C26700DF53D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A00F0191CD0C26700DF53D2 /* Assets.xcassets */; };
+		6A00F01D1CD0C26700DF53D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A00F01B1CD0C26700DF53D2 /* LaunchScreen.storyboard */; };
+		6A00F0311CD1201300DF53D2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A00F0301CD1201300DF53D2 /* ViewController.m */; };
+		6A71C29A1CD13980004320A9 /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 6A71C2991CD13980004320A9 /* SimpleVertex.glsl */; };
+		6A71C29C1CD13A4F004320A9 /* SimpleFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 6A71C29B1CD13A4F004320A9 /* SimpleFragment.glsl */; };
+		6A71C2A91CD13E9B004320A9 /* CC3Foundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2A01CD13E9B004320A9 /* CC3Foundation.m */; };
+		6A71C2AA1CD13E9B004320A9 /* CC3GLMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2A21CD13E9B004320A9 /* CC3GLMatrix.m */; };
+		6A71C2AB1CD13E9B004320A9 /* CC3Kazmath.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2A31CD13E9B004320A9 /* CC3Kazmath.c */; };
+		6A71C2AC1CD13E9B004320A9 /* CC3Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2A71CD13E9B004320A9 /* CC3Math.m */; };
+		6A71C2B21CD21039004320A9 /* SKAsyncGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2AF1CD21039004320A9 /* SKAsyncGLView.m */; };
+		6A71C2B31CD21039004320A9 /* SKAsyncGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2B11CD21039004320A9 /* SKAsyncGLViewController.m */; };
+		6A71C2B71CD21489004320A9 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2B61CD21489004320A9 /* BasicViewController.m */; };
+		C3987DB84930E9B72C7DEEFE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF55AAE6227749C3F5551629 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6A00F00A1CD0C26700DF53D2 /* SKAsyncGLViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKAsyncGLViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A00F00E1CD0C26700DF53D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6A00F0101CD0C26700DF53D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6A00F0111CD0C26700DF53D2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6A00F0131CD0C26700DF53D2 /* CubeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeViewController.h; sourceTree = "<group>"; };
+		6A00F0141CD0C26700DF53D2 /* CubeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeViewController.m; sourceTree = "<group>"; };
+		6A00F0171CD0C26700DF53D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6A00F0191CD0C26700DF53D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6A00F01C1CD0C26700DF53D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6A00F01E1CD0C26700DF53D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A00F02F1CD1201300DF53D2 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6A00F0301CD1201300DF53D2 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6A71C2991CD13980004320A9 /* SimpleVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertex.glsl; sourceTree = "<group>"; };
+		6A71C29B1CD13A4F004320A9 /* SimpleFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleFragment.glsl; sourceTree = "<group>"; };
+		6A71C29F1CD13E9B004320A9 /* CC3Foundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Foundation.h; sourceTree = "<group>"; };
+		6A71C2A01CD13E9B004320A9 /* CC3Foundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CC3Foundation.m; sourceTree = "<group>"; };
+		6A71C2A11CD13E9B004320A9 /* CC3GLMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3GLMatrix.h; sourceTree = "<group>"; };
+		6A71C2A21CD13E9B004320A9 /* CC3GLMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CC3GLMatrix.m; sourceTree = "<group>"; };
+		6A71C2A31CD13E9B004320A9 /* CC3Kazmath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CC3Kazmath.c; sourceTree = "<group>"; };
+		6A71C2A41CD13E9B004320A9 /* CC3Kazmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Kazmath.h; sourceTree = "<group>"; };
+		6A71C2A51CD13E9B004320A9 /* CC3Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Logging.h; sourceTree = "<group>"; };
+		6A71C2A61CD13E9B004320A9 /* CC3Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Math.h; sourceTree = "<group>"; };
+		6A71C2A71CD13E9B004320A9 /* CC3Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CC3Math.m; sourceTree = "<group>"; };
+		6A71C2A81CD13E9B004320A9 /* ccTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccTypes.h; sourceTree = "<group>"; };
+		6A71C2AE1CD21039004320A9 /* SKAsyncGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAsyncGLView.h; sourceTree = "<group>"; };
+		6A71C2AF1CD21039004320A9 /* SKAsyncGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAsyncGLView.m; sourceTree = "<group>"; };
+		6A71C2B01CD21039004320A9 /* SKAsyncGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAsyncGLViewController.h; sourceTree = "<group>"; };
+		6A71C2B11CD21039004320A9 /* SKAsyncGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAsyncGLViewController.m; sourceTree = "<group>"; };
+		6A71C2B51CD21489004320A9 /* BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicViewController.h; sourceTree = "<group>"; };
+		6A71C2B61CD21489004320A9 /* BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
+		762F5C65290A6E8F7CCAB857 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BF55AAE6227749C3F5551629 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D67F41E571512E67556CC63B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6A00F0071CD0C26700DF53D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3987DB84930E9B72C7DEEFE /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D86BCC062DC133D8491B025 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF55AAE6227749C3F5551629 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6A00F0011CD0C26700DF53D2 = {
+			isa = PBXGroup;
+			children = (
+				6A00F00C1CD0C26700DF53D2 /* SKAsyncGLViewController */,
+				6A00F00B1CD0C26700DF53D2 /* Products */,
+				9CC2AF488C80E969D2C57BC9 /* Pods */,
+				1D86BCC062DC133D8491B025 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6A00F00B1CD0C26700DF53D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A00F00A1CD0C26700DF53D2 /* SKAsyncGLViewController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6A00F00C1CD0C26700DF53D2 /* SKAsyncGLViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6A71C2B41CD21467004320A9 /* ViewControllers */,
+				6A71C2AD1CD21039004320A9 /* Classes */,
+				6A71C2981CD13972004320A9 /* Shaders */,
+				6A00F0101CD0C26700DF53D2 /* AppDelegate.h */,
+				6A00F0111CD0C26700DF53D2 /* AppDelegate.m */,
+				6A00F0191CD0C26700DF53D2 /* Assets.xcassets */,
+				6A00F01E1CD0C26700DF53D2 /* Info.plist */,
+				6A00F01B1CD0C26700DF53D2 /* LaunchScreen.storyboard */,
+				6A00F0161CD0C26700DF53D2 /* Main.storyboard */,
+				6A00F00D1CD0C26700DF53D2 /* Supporting Files */,
+			);
+			path = SKAsyncGLViewController;
+			sourceTree = "<group>";
+		};
+		6A00F00D1CD0C26700DF53D2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A00F00E1CD0C26700DF53D2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6A71C2981CD13972004320A9 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				6A71C2991CD13980004320A9 /* SimpleVertex.glsl */,
+				6A71C29B1CD13A4F004320A9 /* SimpleFragment.glsl */,
+				6A71C29F1CD13E9B004320A9 /* CC3Foundation.h */,
+				6A71C2A01CD13E9B004320A9 /* CC3Foundation.m */,
+				6A71C2A11CD13E9B004320A9 /* CC3GLMatrix.h */,
+				6A71C2A21CD13E9B004320A9 /* CC3GLMatrix.m */,
+				6A71C2A31CD13E9B004320A9 /* CC3Kazmath.c */,
+				6A71C2A41CD13E9B004320A9 /* CC3Kazmath.h */,
+				6A71C2A51CD13E9B004320A9 /* CC3Logging.h */,
+				6A71C2A61CD13E9B004320A9 /* CC3Math.h */,
+				6A71C2A71CD13E9B004320A9 /* CC3Math.m */,
+				6A71C2A81CD13E9B004320A9 /* ccTypes.h */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
+		6A71C2AD1CD21039004320A9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6A71C2AE1CD21039004320A9 /* SKAsyncGLView.h */,
+				6A71C2AF1CD21039004320A9 /* SKAsyncGLView.m */,
+				6A71C2B01CD21039004320A9 /* SKAsyncGLViewController.h */,
+				6A71C2B11CD21039004320A9 /* SKAsyncGLViewController.m */,
+			);
+			name = Classes;
+			path = ../../../Classes;
+			sourceTree = "<group>";
+		};
+		6A71C2B41CD21467004320A9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6A71C2B51CD21489004320A9 /* BasicViewController.h */,
+				6A71C2B61CD21489004320A9 /* BasicViewController.m */,
+				6A00F0131CD0C26700DF53D2 /* CubeViewController.h */,
+				6A00F0141CD0C26700DF53D2 /* CubeViewController.m */,
+				6A00F02F1CD1201300DF53D2 /* ViewController.h */,
+				6A00F0301CD1201300DF53D2 /* ViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9CC2AF488C80E969D2C57BC9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				762F5C65290A6E8F7CCAB857 /* Pods.debug.xcconfig */,
+				D67F41E571512E67556CC63B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6A00F0091CD0C26700DF53D2 /* SKAsyncGLViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A00F0211CD0C26700DF53D2 /* Build configuration list for PBXNativeTarget "SKAsyncGLViewController" */;
+			buildPhases = (
+				5923DD6EC85D54B2541094C4 /* Check Pods Manifest.lock */,
+				6A00F0061CD0C26700DF53D2 /* Sources */,
+				6A00F0071CD0C26700DF53D2 /* Frameworks */,
+				6A00F0081CD0C26700DF53D2 /* Resources */,
+				E143995CDF060E29154312DA /* Embed Pods Frameworks */,
+				C8CF746E08B7DA39545AE28E /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SKAsyncGLViewController;
+			productName = SKAsyncGLViewController;
+			productReference = 6A00F00A1CD0C26700DF53D2 /* SKAsyncGLViewController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6A00F0021CD0C26700DF53D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = test;
+				TargetAttributes = {
+					6A00F0091CD0C26700DF53D2 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 6A00F0051CD0C26700DF53D2 /* Build configuration list for PBXProject "SKAsyncGLViewController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6A00F0011CD0C26700DF53D2;
+			productRefGroup = 6A00F00B1CD0C26700DF53D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6A00F0091CD0C26700DF53D2 /* SKAsyncGLViewController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6A00F0081CD0C26700DF53D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A00F01D1CD0C26700DF53D2 /* LaunchScreen.storyboard in Resources */,
+				6A71C29A1CD13980004320A9 /* SimpleVertex.glsl in Resources */,
+				6A00F01A1CD0C26700DF53D2 /* Assets.xcassets in Resources */,
+				6A00F0181CD0C26700DF53D2 /* Main.storyboard in Resources */,
+				6A71C29C1CD13A4F004320A9 /* SimpleFragment.glsl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5923DD6EC85D54B2541094C4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C8CF746E08B7DA39545AE28E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E143995CDF060E29154312DA /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A00F0061CD0C26700DF53D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A71C2AB1CD13E9B004320A9 /* CC3Kazmath.c in Sources */,
+				6A00F0311CD1201300DF53D2 /* ViewController.m in Sources */,
+				6A71C2B31CD21039004320A9 /* SKAsyncGLViewController.m in Sources */,
+				6A71C2B21CD21039004320A9 /* SKAsyncGLView.m in Sources */,
+				6A00F0151CD0C26700DF53D2 /* CubeViewController.m in Sources */,
+				6A00F0121CD0C26700DF53D2 /* AppDelegate.m in Sources */,
+				6A71C2A91CD13E9B004320A9 /* CC3Foundation.m in Sources */,
+				6A00F00F1CD0C26700DF53D2 /* main.m in Sources */,
+				6A71C2AA1CD13E9B004320A9 /* CC3GLMatrix.m in Sources */,
+				6A71C2B71CD21489004320A9 /* BasicViewController.m in Sources */,
+				6A71C2AC1CD13E9B004320A9 /* CC3Math.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6A00F0161CD0C26700DF53D2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A00F0171CD0C26700DF53D2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6A00F01B1CD0C26700DF53D2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A00F01C1CD0C26700DF53D2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6A00F01F1CD0C26700DF53D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6A00F0201CD0C26700DF53D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6A00F0221CD0C26700DF53D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 762F5C65290A6E8F7CCAB857 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SKAsyncGLViewController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.SKAsyncGLViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6A00F0231CD0C26700DF53D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D67F41E571512E67556CC63B /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SKAsyncGLViewController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.SKAsyncGLViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6A00F0051CD0C26700DF53D2 /* Build configuration list for PBXProject "SKAsyncGLViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A00F01F1CD0C26700DF53D2 /* Debug */,
+				6A00F0201CD0C26700DF53D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A00F0211CD0C26700DF53D2 /* Build configuration list for PBXNativeTarget "SKAsyncGLViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A00F0221CD0C26700DF53D2 /* Debug */,
+				6A00F0231CD0C26700DF53D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6A00F0021CD0C26700DF53D2 /* Project object */;
+}
