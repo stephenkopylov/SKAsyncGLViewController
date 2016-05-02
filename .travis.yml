@@ -5,7 +5,7 @@ env:
   global:
   - WORKSPACE="Examples/SKAsyncGLViewController/SKAsyncGLViewController.xcworkspace"
   - IOS_FRAMEWORK_SCHEME="SKAsyncGLViewController"
-  - IOS_SDK=iphonesimulator9.2
+  - IOS_SDK=iphonesimulator
 
 script:
 - xcodebuild clean build -workspace "$WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" ACTIVE_ARCH_ONLY=0
