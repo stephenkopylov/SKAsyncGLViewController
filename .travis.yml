@@ -2,10 +2,9 @@ language: objective-c
 osx_image: xcode7.3
 env:
   global:
-  - PROJECT="Examples/SKAsyncGLViewController/SKAsyncGLViewController.xcworkspace"
+  - PROJECT="Examples/SKAsyncGLViewController/SKAsyncGLViewController.xcodeproj"
   - IOS_FRAMEWORK_SCHEME="SKAsyncGLViewController"
   - IOS_SDK=iphonesimulator9.3
 
 script:
-- xcodebuild clean build -project "$PROJECT" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK"
-- xcodebuild test -project "$PROJECT" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK"
+- xcodebuild -workspace SKAsyncGLViewController.xcworkspace -scheme SKAsyncGLViewController clean build -project "$PROJECT" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK"
