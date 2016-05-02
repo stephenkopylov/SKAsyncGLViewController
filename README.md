@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/stephenkopylov/SKAsyncGLViewController.svg)](https://travis-ci.org/stephenkopylov/SKAsyncGLViewController)
 [![Version](https://img.shields.io/cocoapods/v/SKAsyncGLViewController.svg?style=flat)](http://cocoapods.org/pods/SKAsyncGLViewController)
 [![License](https://img.shields.io/cocoapods/l/SKAsyncGLViewController.svg?style=flat)](http://cocoapods.org/pods/SKAsyncGLViewController)
 [![Platform](https://img.shields.io/badge/platform-ios-brightgreen.svg?style=flat)](http://cocoapods.org/pods/SKAsyncGLViewController)
