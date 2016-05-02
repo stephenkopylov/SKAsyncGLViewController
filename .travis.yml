@@ -1,5 +1,10 @@
 language: objective-c
 osx_image: xcode7.3
-language: objective-c
-xcode_workspace: Examples/SKAsyncGLViewController/SKAsyncGLViewController.xcworkspace
-xcode_scheme: SKAsyncGLViewController
+env:
+  global:
+  - WORKSPACE="Examples/SKAsyncGLViewController/SKAsyncGLViewController.xcworkspace"
+  - IOS_FRAMEWORK_SCHEME="SKAsyncGLViewController"
+  - IOS_SDK=iphonesimulator9.3
+
+script:
+- xcodebuild clean build -workspace "$WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK"
