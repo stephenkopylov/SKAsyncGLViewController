@@ -1,7 +1,4 @@
 language: objective-c
 osx_image: xcode7.1
-sudo: false
-
 script:
-- cd Examples/SKAsyncGLViewController
-- xcodebuild clean build -workspace SKAsyncGLViewController.xcworkspace -scheme SKAsyncGLViewController -sdk iphonesimulator ACTIVE_ARCH_ONLY=0
+- xcodebuild clean build -workspace Examples/SKAsyncGLViewController/SKAsyncGLViewController.xcworkspace -scheme SKAsyncGLViewController -sdk iphonesimulator9.3
