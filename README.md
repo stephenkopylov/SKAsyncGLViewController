@@ -1,3 +1,7 @@
+[![Version](https://img.shields.io/cocoapods/v/SKAsyncGLViewController.svg?style=flat)](http://cocoapods.org/pods/SKAsyncGLViewController)
+[![License](https://img.shields.io/cocoapods/l/SKAsyncGLViewController.svg?style=flat)](http://cocoapods.org/pods/SKAsyncGLViewController)
+[![Platform](https://img.shields.io/badge/platform-ios-brightgreen.svg?style=flat)](http://cocoapods.org/pods/SKAsyncGLViewController)
+
 # SKAsyncGLViewController
 SKAsyncGLViewController - replacement for classical GLKit stack (GLKView + GLKViewController). 
 
