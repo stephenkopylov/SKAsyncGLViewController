@@ -11,7 +11,6 @@
 @interface SKAsyncGLView ()
 @property (nonatomic) BOOL contextsCreated;
 @property (nonatomic) BOOL buffersCreated;
-@property (nonatomic, getter = isRenderable) BOOL renderable;
 @property (nonatomic) BOOL rendering;
 @property (nonatomic) BOOL removing;
 @end
