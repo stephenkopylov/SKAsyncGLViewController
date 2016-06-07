@@ -211,6 +211,8 @@
 }
 
 
+#pragma mark - public methods
+
 - (BOOL)isRenderable
 {
     if ( _inactive || self.frame.size.width == 0.0f || self.frame.size.height == 0.0f || self.isHidden || [UIApplication sharedApplication].applicationState != UIApplicationStateActive || !self.superview || self.layer.frame.size.width == 0.0f || self.layer.frame.size.height == 0.0f ) {

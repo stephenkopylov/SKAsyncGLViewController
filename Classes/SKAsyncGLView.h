@@ -34,4 +34,6 @@
 
 - (void)render;
 
+- (BOOL)isRenderable;
+
 @end
