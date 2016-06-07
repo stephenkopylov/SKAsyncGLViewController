@@ -28,7 +28,7 @@
 @property (nonatomic) GLuint framebuffer;
 @property (nonatomic, strong) EAGLContext *mainContext;
 @property (nonatomic, strong) EAGLContext *renderContext;
-@property (nonatomic, getter = isRenderable) BOOL renderable;
+@property (nonatomic) BOOL log;
 
 @property (nonatomic, weak) id<SKAsyncGLViewDelegate> delegate;
 
