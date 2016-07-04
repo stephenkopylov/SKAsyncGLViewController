@@ -44,9 +44,12 @@
         
         ((CAEAGLLayer *)self.layer).opaque = NO;
         ((CAEAGLLayer *)self.layer).contentsScale = [UIScreen mainScreen].scale;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActiveNotification) name:UIApplicationWillResignActiveNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForegroundNotification) name:UIApplicationWillEnterForegroundNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForegroundNotification) name:UIApplicationDidBecomeActiveNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActiveNotification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActiveNotification:) name:UIApplicationWillTerminateNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActiveNotification:) name:UIApplicationWillResignActiveNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForegroundNotification:) name:UIApplicationWillEnterForegroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForegroundNotification:) name:UIApplicationDidBecomeActiveNotification object:nil];
     }
     
     return self;
@@ -102,13 +105,13 @@
 }
 
 
-- (void)applicationWillResignActiveNotification
+- (void)applicationWillResignActiveNotification:(NSNotification*)notification
 {
     _inactive = YES;
 }
 
 
-- (void)applicationWillEnterForegroundNotification
+- (void)applicationWillEnterForegroundNotification:(NSNotification*)notification
 {
     _inactive = NO;
 }
