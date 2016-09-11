@@ -12,7 +12,6 @@
 @property (nonatomic) BOOL contextsCreated;
 @property (nonatomic) BOOL buffersCreated;
 @property (atomic) BOOL rendering;
-@property (atomic) BOOL inactive;
 @end
 
 @implementation SKAsyncGLView

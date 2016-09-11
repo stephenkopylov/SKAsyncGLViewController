@@ -29,6 +29,7 @@
 @property (nonatomic, strong) EAGLContext *mainContext;
 @property (nonatomic, strong) EAGLContext *renderContext;
 @property (nonatomic) BOOL log;
+@property (atomic) BOOL inactive;
 
 @property (nonatomic, weak) id<SKAsyncGLViewDelegate> delegate;
 
