@@ -74,7 +74,9 @@
 {
     [super removeFromSuperview];
     
-    _inactive = YES;
+    @synchronized (self) {
+        self.inactive = YES;
+    }
     
     dispatch_async(self.renderQueue, ^{
         [EAGLContext setCurrentContext:self.renderContext];
@@ -106,13 +108,17 @@
 
 - (void)applicationWillResignActiveNotification:(NSNotification*)notification
 {
-    _inactive = YES;
+    @synchronized (self) {
+        self.inactive = YES;
+    }
 }
 
 
 - (void)applicationWillEnterForegroundNotification:(NSNotification*)notification
 {
-    _inactive = NO;
+    @synchronized (self) {
+        self.inactive = NO;
+    }
 }
 
 
@@ -177,13 +183,13 @@
 
 - (void)render
 {
-    if ( [self isRenderable] && !_rendering ) {
+    if ( [self isRenderable] && !self.rendering ) {
         CGFloat width = self.frame.size.width * [UIScreen mainScreen].scale;
         CGFloat height = self.frame.size.height *  [UIScreen mainScreen].scale;
         
         dispatch_async(self.renderQueue, ^{
-            if ( [self isRenderable] && !_rendering ) {
-                _rendering = YES;
+            if ( [self isRenderable] && !self.rendering ) {
+                self.rendering = YES;
                 
                 [EAGLContext setCurrentContext:self.renderContext];
                 
@@ -205,9 +211,11 @@
                         [self.mainContext presentRenderbuffer:_renderbuffer];
                         glFlush();
                     }
+                    
+                    self.rendering = NO;
                 });
                 
-                _rendering = NO;
+                
             }
         });
     }
@@ -218,11 +226,13 @@
 
 - (BOOL)isRenderable
 {
-    if ( _inactive || self.frame.size.width == 0.0f || self.frame.size.height == 0.0f || self.isHidden || [UIApplication sharedApplication].applicationState != UIApplicationStateActive || !self.superview || self.layer.frame.size.width == 0.0f || self.layer.frame.size.height == 0.0f ) {
-        return NO;
+    @synchronized (self) {
+        if ( self.inactive || self.frame.size.width == 0.0f || self.frame.size.height == 0.0f || self.isHidden || [UIApplication sharedApplication].applicationState != UIApplicationStateActive || !self.superview || self.layer.frame.size.width == 0.0f || self.layer.frame.size.height == 0.0f ) {
+            return NO;
+        }
+        
+        return YES;
     }
-    
-    return YES;
 }
 
 
