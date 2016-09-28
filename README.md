@@ -1,7 +1,15 @@
-[![Build Status](https://travis-ci.org/stephenkopylov/SKAsyncGLViewController.svg)](https://travis-ci.org/stephenkopylov/SKAsyncGLViewController)
-[![Version](https://img.shields.io/cocoapods/v/SKAsyncGLViewController.svg?style=flat)](http://cocoapods.org/pods/SKAsyncGLViewController)
-[![License](https://img.shields.io/cocoapods/l/SKAsyncGLViewController.svg?style=flat)](http://cocoapods.org/pods/SKAsyncGLViewController)
-[![Platform](https://img.shields.io/badge/platform-ios-brightgreen.svg?style=flat)](http://cocoapods.org/pods/SKAsyncGLViewController)
+<p align="center">
+  <img src="misc/logo.png"/>
+</p>
+
+
+
+<p align="center">
+<a href="https://travis-ci.org/stephenkopylov/SKAsyncGLViewController"><img src="https://travis-ci.org/stephenkopylov/SKAsyncGLViewController.svg" alt="Build Status"/></a>
+<a href="http://cocoapods.org/pods/SKAsyncGLViewController"><img src="https://img.shields.io/cocoapods/v/SKAsyncGLViewController.svg?style=flat" alt="Version"/></a>
+<a href="http://cocoapods.org/pods/SKAsyncGLViewController"><img src="https://img.shields.io/cocoapods/l/SKAsyncGLViewController.svg?style=flat" alt="License"/></a>  
+<a href="http://cocoapods.org/pods/SKAsyncGLViewController"><img src="https://img.shields.io/badge/platform-ios-brightgreen.svg?style=flat" alt="Platform"/></a>  
+</p>
 
 # SKAsyncGLViewController
 SKAsyncGLViewController - replacement for classical GLKit stack (GLKView + GLKViewController). 
@@ -63,3 +71,4 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
