@@ -11,7 +11,6 @@
 <a href="http://cocoapods.org/pods/SKAsyncGLViewController"><img src="https://img.shields.io/badge/platform-ios-brightgreen.svg?style=flat" alt="Platform"/></a>  
 </p>
 
-# SKAsyncGLViewController
 SKAsyncGLViewController - replacement for classical GLKit stack (GLKView + GLKViewController). 
 
 It renders all your stuff in background GCD-thread and shows result on main thread.
