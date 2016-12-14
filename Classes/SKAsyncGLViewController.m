@@ -64,27 +64,6 @@
 }
 
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    if(!self.view.inactive){
-        @synchronized (self) {
-            self.view.inactive = YES;
-            
-            __weak typeof(self) weakSelf = self;
-            [coordinator animateAlongsideTransition:^(id < UIViewControllerTransitionCoordinatorContext > context) {
-            } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-                typeof(weakSelf) strongSelf = weakSelf;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    strongSelf.view.inactive = NO;
-                });
-            }];
-        }
-    }
-}
-
-
 #pragma mark - private methods
 
 - (void)render
