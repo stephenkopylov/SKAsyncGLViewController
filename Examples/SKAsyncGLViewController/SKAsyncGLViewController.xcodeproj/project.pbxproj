@@ -23,6 +23,7 @@
 		6A71C2B21CD21039004320A9 /* SKAsyncGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2AF1CD21039004320A9 /* SKAsyncGLView.m */; };
 		6A71C2B31CD21039004320A9 /* SKAsyncGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2B11CD21039004320A9 /* SKAsyncGLViewController.m */; };
 		6A71C2B71CD21489004320A9 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2B61CD21489004320A9 /* BasicViewController.m */; };
+		7916229A1E80144400D14255 /* SKAntialiasedAsyncGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791622991E80144400D14255 /* SKAntialiasedAsyncGLViewController.m */; };
 		C3987DB84930E9B72C7DEEFE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF55AAE6227749C3F5551629 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,8 @@
 		6A71C2B51CD21489004320A9 /* BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicViewController.h; sourceTree = "<group>"; };
 		6A71C2B61CD21489004320A9 /* BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
 		762F5C65290A6E8F7CCAB857 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		791622981E80144400D14255 /* SKAntialiasedAsyncGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAntialiasedAsyncGLViewController.h; sourceTree = "<group>"; };
+		791622991E80144400D14255 /* SKAntialiasedAsyncGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAntialiasedAsyncGLViewController.m; sourceTree = "<group>"; };
 		BF55AAE6227749C3F5551629 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D67F41E571512E67556CC63B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +154,8 @@
 				6A71C2AF1CD21039004320A9 /* SKAsyncGLView.m */,
 				6A71C2B01CD21039004320A9 /* SKAsyncGLViewController.h */,
 				6A71C2B11CD21039004320A9 /* SKAsyncGLViewController.m */,
+				791622981E80144400D14255 /* SKAntialiasedAsyncGLViewController.h */,
+				791622991E80144400D14255 /* SKAntialiasedAsyncGLViewController.m */,
 			);
 			name = Classes;
 			path = ../../../Classes;
@@ -305,6 +310,7 @@
 				6A00F0311CD1201300DF53D2 /* ViewController.m in Sources */,
 				6A71C2B31CD21039004320A9 /* SKAsyncGLViewController.m in Sources */,
 				6A71C2B21CD21039004320A9 /* SKAsyncGLView.m in Sources */,
+				7916229A1E80144400D14255 /* SKAntialiasedAsyncGLViewController.m in Sources */,
 				6A00F0151CD0C26700DF53D2 /* CubeViewController.m in Sources */,
 				6A00F0121CD0C26700DF53D2 /* AppDelegate.m in Sources */,
 				6A71C2A91CD13E9B004320A9 /* CC3Foundation.m in Sources */,
