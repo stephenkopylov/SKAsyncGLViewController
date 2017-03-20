@@ -1,6 +1,6 @@
 //
-//  AntialiasedAsyncGLViewController.m
-//  ExpertOption
+//  SKAntialiasedAsyncGLViewController.m
+//  SKAsyncGLViewController
 //
 //  Created by Stephen Kopylov - Home on 28/04/16.
 //  Copyright © 2016 Admin. All rights reserved.
@@ -132,12 +132,12 @@
     }
     
     if ( _samplestencilbuffer != 0 ) {
-        glDeleteRenderbuffers(1, &_samplestencilbuffer);
+        glDeleteFramebuffers(1, &_samplestencilbuffer);
         _samplestencilbuffer =  0;
     }
     
     if ( _samplerenderbuffer != 0 ) {
-        glDeleteRenderbuffers(1, &_samplerenderbuffer);
+        glDeleteFramebuffers(1, &_samplerenderbuffer);
         _samplerenderbuffer =  0;
     }
 }

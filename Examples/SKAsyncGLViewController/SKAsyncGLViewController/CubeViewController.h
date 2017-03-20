@@ -6,9 +6,9 @@
 //  Copyright © 2016 test. All rights reserved.
 //
 
-#import "SKAsyncGLViewController.h"
+#import "SKAntialiasedAsyncGLViewController.h"
 
-@interface CubeViewController : SKAsyncGLViewController
+@interface CubeViewController : SKAntialiasedAsyncGLViewController
 
 @property (nonatomic) BOOL floating;
 
