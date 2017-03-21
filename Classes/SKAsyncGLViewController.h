@@ -11,17 +11,7 @@
 
 @class SKAsyncGLViewController;
 
-@protocol SKAsyncGLViewControllerDelegate <NSObject>
-
-- (void)setupGL:(SKAsyncGLViewController *)viewController;
-
-- (void)drawGL:(CGRect)rect;
-
-- (void)clearGL:(SKAsyncGLViewController *)viewController;
-
-@end
-
-@interface SKAsyncGLViewController : UIViewController<SKAsyncGLViewDelegate, SKAsyncGLViewControllerDelegate>
+@interface SKAsyncGLViewController : UIViewController<SKAsyncGLViewDelegate>
 
 @property (strong, nonatomic) SKAsyncGLView *view;
 
@@ -29,6 +19,13 @@
 
 @property (nonatomic) BOOL paused;
 
-@property (nonatomic, weak) id<SKAsyncGLViewControllerDelegate> delegate;
+
+- (void)setupGL;
+
+
+- (void)drawGL:(CGRect)rect;
+
+
+- (void)clearGL;
 
 @end

@@ -20,7 +20,6 @@
 
 - (void)loadView
 {
-    self.delegate = self;
     self.view = [SKAsyncGLView new];
     self.view.delegate = self;
 }
@@ -32,6 +31,8 @@
         [self.displayLink invalidate];
         self.displayLink = nil;
     }
+    
+    [self clearGL];
 }
 
 
@@ -86,9 +87,7 @@
 
 - (void)createBuffersForView:(SKAsyncGLView *)asyncView
 {
-    if ( [_delegate respondsToSelector:@selector(setupGL:)] ) {
-        [_delegate setupGL:self];
-    }
+    [self setupGL];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         RDRIntermediateTarget *target = [RDRIntermediateTarget intermediateTargetWithTarget:self];
@@ -98,25 +97,13 @@
 }
 
 
-- (void)removeBuffersForView:(SKAsyncGLView *)asyncView
-{
-    if ( [_delegate respondsToSelector:@selector(clearGL:)] ) {
-        [_delegate clearGL:self];
-    }
-}
-
-
 - (void)drawInRect:(CGRect)rect
 {
-    if ( [_delegate respondsToSelector:@selector(drawGL:)] ) {
-        [_delegate drawGL:rect];
-    }
+    [self drawGL:rect];
 }
 
 
-#pragma mark - SKAsyncGLViewControllerDelegate
-
-- (void)setupGL:(SKAsyncGLViewController *)viewController
+- (void)setupGL
 {
     //    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
@@ -128,7 +115,7 @@
 }
 
 
-- (void)clearGL:(SKAsyncGLViewController *)viewController
+- (void)clearGL
 {
     //    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }

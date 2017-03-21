@@ -16,14 +16,14 @@ typedef struct {
 } Vertex;
 
 const Vertex Vertices[] = {
-    { { 1,  -1,  0                                       }, { 1, 0, 0, 1 } },
-    { { 1,  1,   0                                       }, { 1, 0, 0, 1 } },
-    { { -1, 1,   0                                       }, { 0, 1, 0, 1 } },
-    { { -1, -1,  0                                       }, { 0, 1, 0, 1 } },
-    { { 1,  -1,  -1                                      }, { 1, 0, 0, 1 } },
-    { { 1,  1,   -1                                      }, { 1, 0, 0, 1 } },
-    { { -1, 1,   -1                                      }, { 0, 1, 0, 1 } },
-    { { -1, -1,  -1                                      }, { 0, 1, 0, 1 } }
+    { { 1,  -1,  0                                                             }, { 1, 0, 0, 1 } },
+    { { 1,  1,   0                                                             }, { 1, 0, 0, 1 } },
+    { { -1, 1,   0                                                             }, { 0, 1, 0, 1 } },
+    { { -1, -1,  0                                                             }, { 0, 1, 0, 1 } },
+    { { 1,  -1,  -1                                                            }, { 1, 0, 0, 1 } },
+    { { 1,  1,   -1                                                            }, { 1, 0, 0, 1 } },
+    { { -1, 1,   -1                                                            }, { 0, 1, 0, 1 } },
+    { { -1, -1,  -1                                                            }, { 0, 1, 0, 1 } }
 };
 
 const GLubyte Indices[] = {
@@ -47,17 +47,21 @@ const GLubyte Indices[] = {
     0, 7, 4
 };
 
-@interface CubeViewController ()<SKAsyncGLViewControllerDelegate>
-
-@property (nonatomic) GLuint stencilbuffer;
-@property (nonatomic) GLuint sampleframebuffer;
-@property (nonatomic) GLuint samplestencilbuffer;
-@property (nonatomic) GLuint samplerenderbuffer;
+@interface CubeViewController ()
 
 @property (nonatomic) GLuint positionSlot;
 @property (nonatomic) GLuint colorSlot;
 @property (nonatomic) GLuint projectionUniform;
 @property (nonatomic) GLuint modelViewUniform;
+
+@property (nonatomic) GLuint vertexShader;
+@property (nonatomic) GLuint fragmentShader;
+
+@property (nonatomic) GLuint programHandle;
+
+@property (nonatomic) GLuint vertexBuffer;
+@property (nonatomic) GLuint indexBuffer;
+
 
 @property (nonatomic) double multiplier;
 
@@ -120,36 +124,36 @@ const GLubyte Indices[] = {
 
 - (void)compileShaders
 {
-    GLuint vertexShader = [self compileShader:@"SimpleVertex"
-                                     withType:GL_VERTEX_SHADER];
-    GLuint fragmentShader = [self compileShader:@"SimpleFragment"
-                                       withType:GL_FRAGMENT_SHADER];
+    _vertexShader = [self compileShader:@"SimpleVertex"
+                               withType:GL_VERTEX_SHADER];
+    _fragmentShader = [self compileShader:@"SimpleFragment"
+                                 withType:GL_FRAGMENT_SHADER];
     
-    GLuint programHandle = glCreateProgram();
+    _programHandle = glCreateProgram();
     
-    glAttachShader(programHandle, vertexShader);
-    glAttachShader(programHandle, fragmentShader);
-    glLinkProgram(programHandle);
+    glAttachShader(_programHandle, _vertexShader);
+    glAttachShader(_programHandle, _fragmentShader);
+    glLinkProgram(_programHandle);
     
     GLint linkSuccess;
-    glGetProgramiv(programHandle, GL_LINK_STATUS, &linkSuccess);
+    glGetProgramiv(_programHandle, GL_LINK_STATUS, &linkSuccess);
     
     if ( linkSuccess == GL_FALSE ) {
         GLchar messages[256];
-        glGetProgramInfoLog(programHandle, sizeof(messages), 0, &messages[0]);
+        glGetProgramInfoLog(_programHandle, sizeof(messages), 0, &messages[0]);
         NSString *messageString = [NSString stringWithUTF8String:messages];
         NSLog(@"%@", messageString);
         exit(1);
     }
     
-    glUseProgram(programHandle);
+    glUseProgram(_programHandle);
     
-    _positionSlot = glGetAttribLocation(programHandle, "Position");
-    _colorSlot = glGetAttribLocation(programHandle, "SourceColor");
+    _positionSlot = glGetAttribLocation(_programHandle, "Position");
+    _colorSlot = glGetAttribLocation(_programHandle, "SourceColor");
     glEnableVertexAttribArray(_positionSlot);
     glEnableVertexAttribArray(_colorSlot);
-    _projectionUniform = glGetUniformLocation(programHandle, "Projection");
-    _modelViewUniform = glGetUniformLocation(programHandle, "Modelview");
+    _projectionUniform = glGetUniformLocation(_programHandle, "Projection");
+    _modelViewUniform = glGetUniformLocation(_programHandle, "Modelview");
 }
 
 
@@ -191,63 +195,23 @@ const GLubyte Indices[] = {
 
 - (void)setupVBOs
 {
-    GLuint vertexBuffer;
-    
-    glGenBuffers(1, &vertexBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+    glGenBuffers(1, &_vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
     
-    GLuint indexBuffer;
-    glGenBuffers(1, &indexBuffer);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+    glGenBuffers(1, &_indexBuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
 }
 
 
-- (void)updateBuffersSize:(CGRect)rect
+#pragma mark - SKAsyncGLViewController
+
+- (void)setupGL
 {
-    if ( CGRectEqualToRect(rect, _savedRect)) {
-        return;
-    }
-    
-    _savedRect = rect;
-    
-    CGFloat width = rect.size.width;
-    CGFloat height = rect.size.height;
-    
-    glBindRenderbuffer(GL_RENDERBUFFER, _stencilbuffer);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8_OES, width, height);
-    
-    GLint samples;
-    glGetIntegerv(GL_MAX_SAMPLES_APPLE, &samples);
-    
-    glBindRenderbuffer(GL_RENDERBUFFER, _samplerenderbuffer);
-    glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER, samples, GL_RGBA8_OES, width, height);
-    
-    glBindRenderbuffer(GL_RENDERBUFFER, _samplestencilbuffer);
-    glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER, samples, GL_DEPTH24_STENCIL8_OES, width, height);
-    
+    [super setupGL];
     [self compileShaders];
     [self setupVBOs];
-}
-
-
-#pragma mark - SKAsyncGLViewControllerDelegate
-
-- (void)setupGL:(SKAsyncGLViewController *)viewController
-{
-    glGenRenderbuffers(1, &_stencilbuffer);
-    
-    glGenRenderbuffers(1, &_samplerenderbuffer);
-    glGenRenderbuffers(1, &_samplestencilbuffer);
-    
-    [self updateBuffersSize:CGRectMake(0.0f, 0.0f, self.view.frame.size.width *[UIScreen mainScreen].scale, self.view.frame.size.height *[UIScreen mainScreen].scale)];
-    
-    glGenFramebuffers(1, &_sampleframebuffer);
-    glBindFramebuffer(GL_FRAMEBUFFER, _sampleframebuffer);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _samplerenderbuffer);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _samplestencilbuffer);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _samplestencilbuffer);
 }
 
 
@@ -262,18 +226,17 @@ const GLubyte Indices[] = {
     _multiplier +=  1.5;
     
     CC3GLMatrix *modelView = [CC3GLMatrix matrix];
-    [modelView populateFromTranslation:CC3VectorMake(sin(_multiplier/20.0), 0, -7)];
+    [modelView populateFromTranslation:CC3VectorMake(sin(_multiplier / 20.0), 0, -7)];
     
     [modelView rotateBy:CC3VectorMake(_multiplier, _multiplier, 0)];
     glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.glMatrix);
-    [self updateBuffersSize:rect];
     
-    glBindRenderbuffer(GL_RENDERBUFFER, _samplestencilbuffer);
-    glBindRenderbuffer(GL_RENDERBUFFER, _samplerenderbuffer);
-    glBindFramebuffer(GL_FRAMEBUFFER, _sampleframebuffer);
-    
-    glClearColor(0.f, 0.f, 0.0f, 0.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    [super drawGL:rect];
+}
+
+
+- (void)drawGLInRect:(CGRect)rect
+{
     glEnable(GL_DEPTH_TEST);
     
     glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE,
@@ -283,37 +246,29 @@ const GLubyte Indices[] = {
     
     glDrawElements(GL_TRIANGLES, sizeof(Indices) / sizeof(Indices[0]),
                    GL_UNSIGNED_BYTE, 0);
-    
-    glBindFramebuffer(GL_READ_FRAMEBUFFER_APPLE, _sampleframebuffer);
-    glBindFramebuffer(GL_DRAW_FRAMEBUFFER_APPLE, self.view.framebuffer);
-    glResolveMultisampleFramebufferAPPLE();
-    
-    const GLenum discards[]  = { GL_COLOR_ATTACHMENT0, GL_DEPTH_ATTACHMENT };
-    glDiscardFramebufferEXT(GL_READ_FRAMEBUFFER_APPLE, 2, discards);
-    glFlush();
 }
 
 
-- (void)clearGL:(SKAsyncGLViewController *)viewController
+- (void)clearGL
 {
-    if ( _stencilbuffer != 0 ) {
-        glDeleteRenderbuffers(1, &_stencilbuffer);
-        _stencilbuffer =  0;
+    [super clearGL];
+    
+    if ( _vertexBuffer != 0 ) {
+        glDeleteBuffers(1, &_vertexBuffer);
+        _vertexBuffer =  0;
     }
     
-    if ( _sampleframebuffer != 0 ) {
-        glDeleteFramebuffers(1, &_sampleframebuffer);
-        _sampleframebuffer =  0;
+    if ( _indexBuffer != 0 ) {
+        glDeleteBuffers(1, &_indexBuffer);
+        _indexBuffer =  0;
     }
     
-    if ( _samplestencilbuffer != 0 ) {
-        glDeleteRenderbuffers(1, &_samplestencilbuffer);
-        _samplestencilbuffer =  0;
+    if ( _vertexShader != 0 ) {
+        glDeleteShader(_vertexShader);
     }
     
-    if ( _samplerenderbuffer != 0 ) {
-        glDeleteRenderbuffers(1, &_samplerenderbuffer);
-        _samplerenderbuffer =  0;
+    if ( _fragmentShader != 0 ) {
+        glDeleteShader(_fragmentShader);
     }
 }
 
