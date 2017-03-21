@@ -58,7 +58,7 @@
 
 #pragma mark - SKAsyncGLViewControllerDelegate
 
-- (void)setupGL:(SKAsyncGLViewController *)viewController
+- (void)setupGL
 {
     glGenRenderbuffers(1, &_stencilbuffer);
     
@@ -97,7 +97,8 @@
     }
     
     GLenum err = glGetError();
-    if (err != GL_NO_ERROR) {
+    
+    if ( err != GL_NO_ERROR ) {
         return;
     }
     
@@ -119,8 +120,10 @@
 }
 
 
-- (void)clearGL:(SKAsyncGLViewController *)viewController
+- (void)clearGL
 {
+    [super clearGL];
+    
     if ( _stencilbuffer != 0 ) {
         glDeleteRenderbuffers(1, &_stencilbuffer);
         _stencilbuffer =  0;

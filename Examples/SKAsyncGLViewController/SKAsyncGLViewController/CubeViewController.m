@@ -16,14 +16,14 @@ typedef struct {
 } Vertex;
 
 const Vertex Vertices[] = {
-    { { 1,  -1,  0                                           }, { 1, 0, 0, 1 } },
-    { { 1,  1,   0                                           }, { 1, 0, 0, 1 } },
-    { { -1, 1,   0                                           }, { 0, 1, 0, 1 } },
-    { { -1, -1,  0                                           }, { 0, 1, 0, 1 } },
-    { { 1,  -1,  -1                                          }, { 1, 0, 0, 1 } },
-    { { 1,  1,   -1                                          }, { 1, 0, 0, 1 } },
-    { { -1, 1,   -1                                          }, { 0, 1, 0, 1 } },
-    { { -1, -1,  -1                                          }, { 0, 1, 0, 1 } }
+    { { 1,  -1,  0                                                             }, { 1, 0, 0, 1 } },
+    { { 1,  1,   0                                                             }, { 1, 0, 0, 1 } },
+    { { -1, 1,   0                                                             }, { 0, 1, 0, 1 } },
+    { { -1, -1,  0                                                             }, { 0, 1, 0, 1 } },
+    { { 1,  -1,  -1                                                            }, { 1, 0, 0, 1 } },
+    { { 1,  1,   -1                                                            }, { 1, 0, 0, 1 } },
+    { { -1, 1,   -1                                                            }, { 0, 1, 0, 1 } },
+    { { -1, -1,  -1                                                            }, { 0, 1, 0, 1 } }
 };
 
 const GLubyte Indices[] = {
@@ -47,12 +47,21 @@ const GLubyte Indices[] = {
     0, 7, 4
 };
 
-@interface CubeViewController ()<SKAsyncGLViewControllerDelegate>
+@interface CubeViewController ()
 
 @property (nonatomic) GLuint positionSlot;
 @property (nonatomic) GLuint colorSlot;
 @property (nonatomic) GLuint projectionUniform;
 @property (nonatomic) GLuint modelViewUniform;
+
+@property (nonatomic) GLuint vertexShader;
+@property (nonatomic) GLuint fragmentShader;
+
+@property (nonatomic) GLuint programHandle;
+
+@property (nonatomic) GLuint vertexBuffer;
+@property (nonatomic) GLuint indexBuffer;
+
 
 @property (nonatomic) double multiplier;
 
@@ -115,36 +124,36 @@ const GLubyte Indices[] = {
 
 - (void)compileShaders
 {
-    GLuint vertexShader = [self compileShader:@"SimpleVertex"
-                                     withType:GL_VERTEX_SHADER];
-    GLuint fragmentShader = [self compileShader:@"SimpleFragment"
-                                       withType:GL_FRAGMENT_SHADER];
+    _vertexShader = [self compileShader:@"SimpleVertex"
+                               withType:GL_VERTEX_SHADER];
+    _fragmentShader = [self compileShader:@"SimpleFragment"
+                                 withType:GL_FRAGMENT_SHADER];
     
-    GLuint programHandle = glCreateProgram();
+    _programHandle = glCreateProgram();
     
-    glAttachShader(programHandle, vertexShader);
-    glAttachShader(programHandle, fragmentShader);
-    glLinkProgram(programHandle);
+    glAttachShader(_programHandle, _vertexShader);
+    glAttachShader(_programHandle, _fragmentShader);
+    glLinkProgram(_programHandle);
     
     GLint linkSuccess;
-    glGetProgramiv(programHandle, GL_LINK_STATUS, &linkSuccess);
+    glGetProgramiv(_programHandle, GL_LINK_STATUS, &linkSuccess);
     
     if ( linkSuccess == GL_FALSE ) {
         GLchar messages[256];
-        glGetProgramInfoLog(programHandle, sizeof(messages), 0, &messages[0]);
+        glGetProgramInfoLog(_programHandle, sizeof(messages), 0, &messages[0]);
         NSString *messageString = [NSString stringWithUTF8String:messages];
         NSLog(@"%@", messageString);
         exit(1);
     }
     
-    glUseProgram(programHandle);
+    glUseProgram(_programHandle);
     
-    _positionSlot = glGetAttribLocation(programHandle, "Position");
-    _colorSlot = glGetAttribLocation(programHandle, "SourceColor");
+    _positionSlot = glGetAttribLocation(_programHandle, "Position");
+    _colorSlot = glGetAttribLocation(_programHandle, "SourceColor");
     glEnableVertexAttribArray(_positionSlot);
     glEnableVertexAttribArray(_colorSlot);
-    _projectionUniform = glGetUniformLocation(programHandle, "Projection");
-    _modelViewUniform = glGetUniformLocation(programHandle, "Modelview");
+    _projectionUniform = glGetUniformLocation(_programHandle, "Projection");
+    _modelViewUniform = glGetUniformLocation(_programHandle, "Modelview");
 }
 
 
@@ -186,24 +195,21 @@ const GLubyte Indices[] = {
 
 - (void)setupVBOs
 {
-    GLuint vertexBuffer;
-    
-    glGenBuffers(1, &vertexBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+    glGenBuffers(1, &_vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
     
-    GLuint indexBuffer;
-    glGenBuffers(1, &indexBuffer);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+    glGenBuffers(1, &_indexBuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
 }
 
 
-#pragma mark - SKAsyncGLViewControllerDelegate
+#pragma mark - SKAsyncGLViewController
 
-- (void)setupGL:(SKAsyncGLViewController *)viewController
+- (void)setupGL
 {
-    [super setupGL:viewController];
+    [super setupGL];
     [self compileShaders];
     [self setupVBOs];
 }
@@ -240,6 +246,30 @@ const GLubyte Indices[] = {
     
     glDrawElements(GL_TRIANGLES, sizeof(Indices) / sizeof(Indices[0]),
                    GL_UNSIGNED_BYTE, 0);
+}
+
+
+- (void)clearGL
+{
+    [super clearGL];
+    
+    if ( _vertexBuffer != 0 ) {
+        glDeleteBuffers(1, &_vertexBuffer);
+        _vertexBuffer =  0;
+    }
+    
+    if ( _indexBuffer != 0 ) {
+        glDeleteBuffers(1, &_indexBuffer);
+        _indexBuffer =  0;
+    }
+    
+    if ( _vertexShader != 0 ) {
+        glDeleteShader(_vertexShader);
+    }
+    
+    if ( _fragmentShader != 0 ) {
+        glDeleteShader(_fragmentShader);
+    }
 }
 
 
