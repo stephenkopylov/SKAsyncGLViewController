@@ -74,7 +74,7 @@
 {
     [super removeFromSuperview];
     
-    @synchronized (self) {
+    @synchronized(self) {
         self.inactive = YES;
     }
     
@@ -84,10 +84,6 @@
         if ( _framebuffer != 0 ) {
             glDeleteFramebuffers(1, &_framebuffer);
             _framebuffer =  0;
-        }
-        
-        if ( [_delegate respondsToSelector:@selector(removeBuffersForView:)] ) {
-            [_delegate removeBuffersForView:self];
         }
         
         _renderContext = nil;
@@ -106,17 +102,17 @@
 }
 
 
-- (void)applicationWillResignActiveNotification:(NSNotification*)notification
+- (void)applicationWillResignActiveNotification:(NSNotification *)notification
 {
-    @synchronized (self) {
+    @synchronized(self) {
         self.inactive = YES;
     }
 }
 
 
-- (void)applicationWillEnterForegroundNotification:(NSNotification*)notification
+- (void)applicationWillEnterForegroundNotification:(NSNotification *)notification
 {
-    @synchronized (self) {
+    @synchronized(self) {
         self.inactive = NO;
     }
 }
@@ -214,8 +210,6 @@
                     
                     self.rendering = NO;
                 });
-                
-                
             }
         });
     }
@@ -226,13 +220,19 @@
 
 - (BOOL)isRenderable
 {
-    @synchronized (self) {
+    @synchronized(self) {
         if ( self.inactive || self.frame.size.width == 0.0f || self.frame.size.height == 0.0f || self.isHidden || [UIApplication sharedApplication].applicationState != UIApplicationStateActive || !self.superview || self.layer.frame.size.width == 0.0f || self.layer.frame.size.height == 0.0f ) {
             return NO;
         }
         
         return YES;
     }
+}
+
+
+- (void)setDelegate:(id<SKAsyncGLViewDelegate>)delegate
+{
+    _delegate = delegate;
 }
 
 

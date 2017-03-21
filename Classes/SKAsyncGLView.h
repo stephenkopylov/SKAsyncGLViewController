@@ -17,7 +17,7 @@
 
 - (void)drawInRect:(CGRect)rect;
 
-- (void)removeBuffersForView:(SKAsyncGLView *)asyncView;
+//- (void)removeBuffersForView:(SKAsyncGLView *)asyncView;
 
 @end
 

@@ -34,13 +34,13 @@ Download this repo and drop this files into your project
 ### Usage
 After installation, inherit your viewController from SKAsyncGLViewController and implement these methods:
 
-- **- (void)setupGL:(SKAsyncGLViewController *)viewController** 
+- **- (void)setupGL** 
 
 :wrench: This one for setup your GL - create buffers/load shaders/etc here.
 - **- (void)drawGL:(CGRect)rect**
 
 :black_nib: :pencil2: Here you draws all your stuff!
-- **- (void)clearGL:(SKAsyncGLViewController *)viewController**
+- **- (void)clearGL**
 
 :x: This method calls when your vc's view removes from superview. So here you have to clear all your gl stuff (delete buffers .etc)
 
