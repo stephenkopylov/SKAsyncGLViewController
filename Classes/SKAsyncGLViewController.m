@@ -32,7 +32,15 @@
         self.displayLink = nil;
     }
     
-    [self clearGL];
+    dispatch_sync(self.view.renderQueue, ^{
+        [EAGLContext setCurrentContext:self.view.renderContext];
+        
+        glFlush();
+        
+        [self clearGL];
+        
+        [self.view clear];
+    });
 }
 
 
