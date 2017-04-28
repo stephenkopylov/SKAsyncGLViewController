@@ -217,6 +217,7 @@
 				TargetAttributes = {
 					6A00F0091CD0C26700DF53D2 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = CA3938S9GJ;
 					};
 				};
 			};
@@ -432,6 +433,7 @@
 			baseConfigurationReference = 762F5C65290A6E8F7CCAB857 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CA3938S9GJ;
 				INFOPLIST_FILE = SKAsyncGLViewController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -445,6 +447,7 @@
 			baseConfigurationReference = D67F41E571512E67556CC63B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CA3938S9GJ;
 				INFOPLIST_FILE = SKAsyncGLViewController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

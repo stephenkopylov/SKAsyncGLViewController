@@ -11,10 +11,10 @@
 #import <OpenGLES/ES2/gl.h>
 
 @interface SKAntialiasedAsyncGLViewController ()
-@property (nonatomic) GLuint stencilbuffer;
-@property (nonatomic) GLuint sampleframebuffer;
-@property (nonatomic) GLuint samplestencilbuffer;
-@property (nonatomic) GLuint samplerenderbuffer;
+@property (atomic) GLuint stencilbuffer;
+@property (atomic) GLuint sampleframebuffer;
+@property (atomic) GLuint samplestencilbuffer;
+@property (atomic) GLuint samplerenderbuffer;
 
 @property (nonatomic) CGRect savedRect;
 @end
@@ -86,37 +86,17 @@
     glClearColor(0.f, 0.f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     
-    if ( ![self.view isRenderable] ) {
-        return;
-    }
-    
     [self drawGLInRect:rect];
-    
-    if ( ![self.view isRenderable] ) {
-        return;
-    }
-    
-    GLenum err = glGetError();
-    
-    if ( err != GL_NO_ERROR ) {
-        return;
-    }
     
     glBindFramebuffer(GL_READ_FRAMEBUFFER_APPLE, _sampleframebuffer);
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER_APPLE, self.view.framebuffer);
-    @try {
-        glResolveMultisampleFramebufferAPPLE();
-        
-        const GLenum discards[]  = { GL_COLOR_ATTACHMENT0, GL_DEPTH_ATTACHMENT };
-        glDiscardFramebufferEXT(GL_READ_FRAMEBUFFER_APPLE, 2, discards);
-        
-        if ( ![self.view isRenderable] ) {
-            return;
-        }
-        
-        glFlush();
-    } @catch ( NSException *ex ) {
-    }
+    
+    glResolveMultisampleFramebufferAPPLE();
+    
+    const GLenum discards[]  = { GL_COLOR_ATTACHMENT0, GL_DEPTH_ATTACHMENT };
+    glDiscardFramebufferEXT(GL_READ_FRAMEBUFFER_APPLE, 2, discards);
+    
+    glFlush();
 }
 
 

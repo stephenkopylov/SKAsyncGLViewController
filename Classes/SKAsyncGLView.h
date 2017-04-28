@@ -17,8 +17,6 @@
 
 - (void)drawInRect:(CGRect)rect;
 
-//- (void)removeBuffersForView:(SKAsyncGLView *)asyncView;
-
 @end
 
 @interface SKAsyncGLView : UIView
@@ -36,5 +34,7 @@
 - (void)render;
 
 - (BOOL)isRenderable;
+
+- (void)clear;
 
 @end

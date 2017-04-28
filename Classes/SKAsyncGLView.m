@@ -69,38 +69,6 @@
 }
 
 
-- (void)removeFromSuperview
-{
-    [super removeFromSuperview];
-    
-    @synchronized(self) {
-        self.inactive = YES;
-    }
-    
-    dispatch_async(self.renderQueue, ^{
-        [EAGLContext setCurrentContext:self.renderContext];
-        
-        if ( _framebuffer != 0 ) {
-            glDeleteFramebuffers(1, &_framebuffer);
-            _framebuffer =  0;
-        }
-        
-        _renderContext = nil;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [EAGLContext setCurrentContext:self.mainContext];
-            
-            if ( _renderbuffer != 0 ) {
-                glDeleteRenderbuffers(1, &_renderbuffer);
-                _renderbuffer =  0;
-            }
-            
-            _mainContext = nil;
-        });
-    });
-}
-
-
 - (void)applicationWillResignActiveNotification:(NSNotification *)notification
 {
     @synchronized(self) {
@@ -197,7 +165,7 @@
                     [_delegate drawInRect:rect];
                 }
                 
-                dispatch_sync(dispatch_get_main_queue(), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
                     if ( [self isRenderable] ) {
                         [EAGLContext setCurrentContext:self.mainContext];
                         glBindFramebuffer(GL_FRAMEBUFFER, _renderbuffer);
@@ -212,6 +180,28 @@
             }
         });
     }
+}
+
+
+- (void)clear
+{
+    self.inactive = YES;
+    
+    if ( _framebuffer != 0 ) {
+        glDeleteFramebuffers(1, &_framebuffer);
+        _framebuffer =  0;
+    }
+    
+    _renderContext = nil;
+    
+    [EAGLContext setCurrentContext:self.mainContext];
+    
+    if ( _renderbuffer != 0 ) {
+        glDeleteRenderbuffers(1, &_renderbuffer);
+        _renderbuffer =  0;
+    }
+    
+    _mainContext = nil;
 }
 
 
