@@ -167,6 +167,8 @@
                     [_delegate drawInRect:rect];
                 }
                 
+                glFlush();
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if ( [self isRenderable] ) {
                         [EAGLContext setCurrentContext:self.mainContext];
