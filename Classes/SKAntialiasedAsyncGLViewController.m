@@ -90,13 +90,13 @@
     
     glBindFramebuffer(GL_READ_FRAMEBUFFER_APPLE, _sampleframebuffer);
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER_APPLE, self.view.framebuffer);
+
+    glFlush();
     
     glResolveMultisampleFramebufferAPPLE();
     
     const GLenum discards[]  = { GL_COLOR_ATTACHMENT0, GL_DEPTH_ATTACHMENT };
     glDiscardFramebufferEXT(GL_READ_FRAMEBUFFER_APPLE, 2, discards);
-    
-    glFlush();
 }
 
 
