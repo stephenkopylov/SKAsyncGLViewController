@@ -71,10 +71,13 @@
 
 - (void)applicationWillResignActiveNotification:(NSNotification *)notification
 {
+    self.inactive = YES;
+    [EAGLContext setCurrentContext:self.mainContext];
+    glFlush();
+    
     dispatch_sync(self.renderQueue, ^{
         [EAGLContext setCurrentContext:self.renderContext];
-        glFinish();
-        self.inactive = YES;
+        glFlush();
     });
 }
 
