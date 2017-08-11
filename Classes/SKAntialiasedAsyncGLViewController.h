@@ -6,9 +6,9 @@
 //  Copyright © 2017 test. All rights reserved.
 //
 
-#import "SKAsyncGLViewController.h"
+#import "SKBaseAsyncGLViewController.h"
 
-@interface SKAntialiasedAsyncGLViewController : SKAsyncGLViewController
+@interface SKAntialiasedAsyncGLViewController : SKBaseAsyncGLViewController
 
 - (void)drawGLInRect:(CGRect)rect;
 

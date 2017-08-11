@@ -175,7 +175,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if ( [self isRenderable] ) {
                         [EAGLContext setCurrentContext:self.mainContext];
-                        glBindFramebuffer(GL_FRAMEBUFFER, _renderbuffer);
+                        glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
                         glViewport(0, 0, width, height);
                         
                         [self.mainContext presentRenderbuffer:_renderbuffer];
