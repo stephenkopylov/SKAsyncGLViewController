@@ -16,14 +16,14 @@ typedef struct {
 } Vertex;
 
 const Vertex Vertices[] = {
-    { { 1,  -1,  0                                                             }, { 1, 0, 0, 1 } },
-    { { 1,  1,   0                                                             }, { 1, 0, 0, 1 } },
-    { { -1, 1,   0                                                             }, { 0, 1, 0, 1 } },
-    { { -1, -1,  0                                                             }, { 0, 1, 0, 1 } },
-    { { 1,  -1,  -1                                                            }, { 1, 0, 0, 1 } },
-    { { 1,  1,   -1                                                            }, { 1, 0, 0, 1 } },
-    { { -1, 1,   -1                                                            }, { 0, 1, 0, 1 } },
-    { { -1, -1,  -1                                                            }, { 0, 1, 0, 1 } }
+    { { 1,  -1,  0                                                               }, { 1, 0, 0, 1 } },
+    { { 1,  1,   0                                                               }, { 1, 0, 0, 1 } },
+    { { -1, 1,   0                                                               }, { 0, 1, 0, 1 } },
+    { { -1, -1,  0                                                               }, { 0, 1, 0, 1 } },
+    { { 1,  -1,  -1                                                              }, { 1, 0, 0, 1 } },
+    { { 1,  1,   -1                                                              }, { 1, 0, 0, 1 } },
+    { { -1, 1,   -1                                                              }, { 0, 1, 0, 1 } },
+    { { -1, -1,  -1                                                              }, { 0, 1, 0, 1 } }
 };
 
 const GLubyte Indices[] = {
@@ -237,6 +237,8 @@ const GLubyte Indices[] = {
 
 - (void)drawGLInRect:(CGRect)rect
 {
+    glClearColor(0.f, 0.f, 0.0f, 0.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
     
     glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE,

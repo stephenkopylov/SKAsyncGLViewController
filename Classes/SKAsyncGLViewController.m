@@ -1,131 +1,82 @@
 //
-//  SKAsyncGLViewController.m
+//  SKAntialiasedAsyncGLViewController.m
 //  SKAsyncGLViewController
 //
-//  Created by Stephen Kopylov - Home on 27/04/16.
-//  Copyright © 2016 test. All rights reserved.
+//  Created by Stephen Kopylov - Home on 28/04/16.
+//  Copyright © 2016 Admin. All rights reserved.
 //
 
 #import "SKAsyncGLViewController.h"
-#import "RDRIntermediateTarget.h"
+#import <OpenGLES/ES2/glext.h>
+#import <OpenGLES/ES2/gl.h>
 
 @interface SKAsyncGLViewController ()
+@property (atomic) GLuint renderbuffer;
+@property (nonatomic) CGRect savedRect;
 @end
 
 @implementation SKAsyncGLViewController
 
-@dynamic view;
+#pragma mark - public methods
 
-#pragma mark - lifecycle
-
-- (void)loadView
+- (void)drawGLInRect:(CGRect)rect
 {
-    self.view = [SKAsyncGLView new];
-    self.view.delegate = self;
-}
-
-
-- (void)dealloc
-{
-    if ( self.displayLink ) {
-        [self.displayLink invalidate];
-        self.displayLink = nil;
-    }
-    
-    dispatch_sync(self.view.renderQueue, ^{
-        [EAGLContext setCurrentContext:self.view.renderContext];
-        
-        glFlush();
-        
-        [self clearGL];
-        
-        [self.view clear];
-    });
-}
-
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    if ( self.displayLink ) {
-        self.displayLink.paused = YES;
-    }
-}
-
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    if ( self.displayLink ) {
-        self.displayLink.paused = self.paused;
-    }
-}
-
-
-- (void)removeFromParentViewController
-{
-    [super removeFromParentViewController];
-    
-    if ( self.displayLink ) {
-        [self.displayLink invalidate];
-        self.displayLink = nil;
-    }
+    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
 
 #pragma mark - private methods
 
-- (void)render
+- (void)updateBuffersSize:(CGRect)rect
 {
-    [self.view render];
-}
-
-
-#pragma mark - getters/setters
-
-- (void)setPaused:(BOOL)paused
-{
-    _paused = paused;
+    if ( CGRectEqualToRect(rect, _savedRect)) {
+        return;
+    }
     
-    self.displayLink.paused = _paused;
-}
-
-
-#pragma mark - SKAsyncGLViewDelegate
-
-- (void)createBuffersForView:(SKAsyncGLView *)asyncView
-{
-    [self setupGL];
+    _savedRect = rect;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        RDRIntermediateTarget *target = [RDRIntermediateTarget intermediateTargetWithTarget:self];
-        self.displayLink = [CADisplayLink displayLinkWithTarget:target selector:@selector(render)];
-        [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-    });
+    CGFloat width = rect.size.width;
+    CGFloat height = rect.size.height;
+    
+    glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8_OES, width, height);
 }
 
 
-- (void)drawInRect:(CGRect)rect
-{
-    [self drawGL:rect];
-}
-
+#pragma mark - SKAsyncGLViewControllerDelegate
 
 - (void)setupGL
 {
-    //    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+    glGenRenderbuffers(1, &_renderbuffer);
+    
+    [self updateBuffersSize:CGRectMake(0.0f, 0.0f, self.view.frame.size.width *[UIScreen mainScreen].scale, self.view.frame.size.height *[UIScreen mainScreen].scale)];
+    
+    glBindFramebuffer(GL_FRAMEBUFFER, self.view.framebuffer);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _renderbuffer);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _renderbuffer);
 }
 
 
 - (void)drawGL:(CGRect)rect
 {
-    //    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+    [self updateBuffersSize:rect];
+    
+    glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
+    
+    [self drawGLInRect:rect];
+    
+    glFlush();
 }
 
 
 - (void)clearGL
 {
-    //    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+    [super clearGL];
+    
+    if ( _renderbuffer != 0 ) {
+        glDeleteRenderbuffers(1, &_renderbuffer);
+        _renderbuffer =  0;
+    }
 }
 
 

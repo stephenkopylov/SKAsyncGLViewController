@@ -16,7 +16,7 @@
 
 #pragma mark - SKAsyncGLViewControllerDelegate
 
-- (void)drawGL:(CGRect)rect
+- (void)drawInRect:(CGRect)rect
 {
     glClearColor(1.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);

@@ -11,7 +11,6 @@
 #import <OpenGLES/ES2/gl.h>
 
 @interface SKAntialiasedAsyncGLViewController ()
-@property (atomic) GLuint stencilbuffer;
 @property (atomic) GLuint sampleframebuffer;
 @property (atomic) GLuint samplestencilbuffer;
 @property (atomic) GLuint samplerenderbuffer;
@@ -42,8 +41,6 @@
     CGFloat width = rect.size.width;
     CGFloat height = rect.size.height;
     
-    glBindRenderbuffer(GL_RENDERBUFFER, _stencilbuffer);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8_OES, width, height);
     
     GLint samples;
     glGetIntegerv(GL_MAX_SAMPLES_APPLE, &samples);
@@ -60,8 +57,6 @@
 
 - (void)setupGL
 {
-    glGenRenderbuffers(1, &_stencilbuffer);
-    
     glGenRenderbuffers(1, &_samplerenderbuffer);
     glGenRenderbuffers(1, &_samplestencilbuffer);
     
@@ -79,18 +74,15 @@
 {
     [self updateBuffersSize:rect];
     
+    glBindFramebuffer(GL_FRAMEBUFFER, _sampleframebuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, _samplestencilbuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, _samplerenderbuffer);
-    glBindFramebuffer(GL_FRAMEBUFFER, _sampleframebuffer);
-    
-    glClearColor(0.f, 0.f, 0.0f, 0.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     
     [self drawGLInRect:rect];
     
     glBindFramebuffer(GL_READ_FRAMEBUFFER_APPLE, _sampleframebuffer);
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER_APPLE, self.view.framebuffer);
-
+    
     glFlush();
     
     glResolveMultisampleFramebufferAPPLE();
@@ -103,11 +95,6 @@
 - (void)clearGL
 {
     [super clearGL];
-    
-    if ( _stencilbuffer != 0 ) {
-        glDeleteRenderbuffers(1, &_stencilbuffer);
-        _stencilbuffer =  0;
-    }
     
     if ( _sampleframebuffer != 0 ) {
         glDeleteFramebuffers(1, &_sampleframebuffer);
