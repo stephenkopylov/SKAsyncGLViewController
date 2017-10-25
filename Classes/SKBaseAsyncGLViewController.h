@@ -20,7 +20,7 @@
 @property (nonatomic) BOOL paused;
 
 
-- (void)setupGL;
+- (void)setupGL:(CGRect)rect;
 
 
 - (void)drawGL:(CGRect)rect;

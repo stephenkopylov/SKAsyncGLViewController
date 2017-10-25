@@ -12,6 +12,7 @@
 @property (nonatomic) BOOL contextsCreated;
 @property (nonatomic) BOOL buffersCreated;
 @property (atomic) BOOL rendering;
+@property (atomic) BOOL isRenderable;
 @end
 
 @implementation SKAsyncGLView
@@ -106,6 +107,8 @@
 
 - (void)createBuffers
 {
+    CGRect rect = self.frame;
+    
     [EAGLContext setCurrentContext:self.mainContext];
     
     glGenRenderbuffers(1, &_renderbuffer);
@@ -122,8 +125,8 @@
         glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
         glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _framebuffer);
         
-        if ( [_delegate respondsToSelector:@selector(createBuffersForView:)] ) {
-            [_delegate createBuffersForView:self];
+        if ( [_delegate respondsToSelector:@selector(createBuffers:)] ) {
+            [_delegate createBuffers:rect];
         }
         
         GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
@@ -151,12 +154,14 @@
 
 - (void)render
 {
-    if ( [self isRenderable] && !self.rendering ) {
+    self.isRenderable = !self.inactive && self.frame.size.width > 0.0f && self.frame.size.height > 0.0f && !self.isHidden || [UIApplication sharedApplication].applicationState != UIApplicationStateBackground && self.superview && self.layer.frame.size.width > 0.0f && self.layer.frame.size.height > 0.0f;
+    
+    if ( self.isRenderable && !self.rendering ) {
         CGFloat width = self.frame.size.width * [UIScreen mainScreen].scale;
         CGFloat height = self.frame.size.height *  [UIScreen mainScreen].scale;
         
         dispatch_async(self.renderQueue, ^{
-            if ( [self isRenderable] && !self.rendering ) {
+            if ( self.isRenderable && !self.rendering ) {
                 self.rendering = YES;
                 
                 [EAGLContext setCurrentContext:self.renderContext];
@@ -173,7 +178,7 @@
                 glFlush();
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if ( [self isRenderable] ) {
+                    if ( self.isRenderable ) {
                         [EAGLContext setCurrentContext:self.mainContext];
                         glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
                         glViewport(0, 0, width, height);
@@ -213,17 +218,17 @@
 
 
 #pragma mark - public methods
-
-- (BOOL)isRenderable
-{
-    @synchronized(self) {
-        if ( self.inactive || self.frame.size.width == 0.0f || self.frame.size.height == 0.0f || self.isHidden || [UIApplication sharedApplication].applicationState == UIApplicationStateBackground || !self.superview || self.layer.frame.size.width == 0.0f || self.layer.frame.size.height == 0.0f ) {
-            return NO;
-        }
-        
-        return YES;
-    }
-}
+//
+//- (BOOL)isRenderable
+//{
+//    @synchronized(self) {
+//        if ( self.inactive || self.frame.size.width == 0.0f || self.frame.size.height == 0.0f || self.isHidden || [UIApplication sharedApplication].applicationState == UIApplicationStateBackground || !self.superview || self.layer.frame.size.width == 0.0f || self.layer.frame.size.height == 0.0f ) {
+//            return NO;
+//        }
+//        
+//        return YES;
+//    }
+//}
 
 
 - (void)setDelegate:(id<SKAsyncGLViewDelegate>)delegate

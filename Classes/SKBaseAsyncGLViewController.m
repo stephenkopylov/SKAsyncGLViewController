@@ -93,9 +93,9 @@
 
 #pragma mark - SKAsyncGLViewDelegate
 
-- (void)createBuffersForView:(SKAsyncGLView *)asyncView
+-(void)createBuffers:(CGRect)rect
 {
-    [self setupGL];
+    [self setupGL:rect];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         RDRIntermediateTarget *target = [RDRIntermediateTarget intermediateTargetWithTarget:self];
@@ -111,7 +111,7 @@
 }
 
 
-- (void)setupGL
+- (void)setupGL:(CGRect)rect
 {
     //    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
