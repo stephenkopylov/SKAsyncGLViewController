@@ -207,9 +207,9 @@ const GLubyte Indices[] = {
 
 #pragma mark - SKAsyncGLViewController
 
-- (void)setupGL
+-(void)setupGL:(CGRect)rect
 {
-    [super setupGL];
+    [super setupGL:rect];
     [self compileShaders];
     [self setupVBOs];
 }
