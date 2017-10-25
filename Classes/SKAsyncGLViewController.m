@@ -45,11 +45,11 @@
 
 #pragma mark - SKAsyncGLViewControllerDelegate
 
-- (void)setupGL
+- (void)setupGL:(CGRect)rect
 {
     glGenRenderbuffers(1, &_renderbuffer);
     
-    [self updateBuffersSize:CGRectMake(0.0f, 0.0f, self.view.frame.size.width *[UIScreen mainScreen].scale, self.view.frame.size.height *[UIScreen mainScreen].scale)];
+    [self updateBuffersSize:CGRectMake(0.0f, 0.0f, rect.size.width *[UIScreen mainScreen].scale, rect.size.height *[UIScreen mainScreen].scale)];
     
     glBindFramebuffer(GL_FRAMEBUFFER, self.view.framebuffer);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _renderbuffer);
