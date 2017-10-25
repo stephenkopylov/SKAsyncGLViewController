@@ -154,7 +154,7 @@
 
 - (void)render
 {
-    self.isRenderable = !self.inactive && self.frame.size.width > 0.0f && self.frame.size.height > 0.0f && !self.isHidden || [UIApplication sharedApplication].applicationState != UIApplicationStateBackground && self.superview && self.layer.frame.size.width > 0.0f && self.layer.frame.size.height > 0.0f;
+    self.isRenderable = !self.inactive && self.frame.size.width > 0.0f && self.frame.size.height > 0.0f && !self.isHidden && [UIApplication sharedApplication].applicationState != UIApplicationStateBackground && self.superview && self.layer.frame.size.width > 0.0f && self.layer.frame.size.height > 0.0f;
     
     if ( self.isRenderable && !self.rendering ) {
         CGFloat width = self.frame.size.width * [UIScreen mainScreen].scale;
@@ -218,18 +218,6 @@
 
 
 #pragma mark - public methods
-//
-//- (BOOL)isRenderable
-//{
-//    @synchronized(self) {
-//        if ( self.inactive || self.frame.size.width == 0.0f || self.frame.size.height == 0.0f || self.isHidden || [UIApplication sharedApplication].applicationState == UIApplicationStateBackground || !self.superview || self.layer.frame.size.width == 0.0f || self.layer.frame.size.height == 0.0f ) {
-//            return NO;
-//        }
-//        
-//        return YES;
-//    }
-//}
-
 
 - (void)setDelegate:(id<SKAsyncGLViewDelegate>)delegate
 {
