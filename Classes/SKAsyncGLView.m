@@ -118,20 +118,27 @@
     
     _buffersCreated = YES;
     
+    __typeof__(self) __weak wself = self;
+    
     dispatch_async(self.renderQueue, ^{
-        [EAGLContext setCurrentContext:self.renderContext];
+        __typeof__(wself) __strong sself = wself;
         
-        glGenFramebuffers(1, &_framebuffer);
-        glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _framebuffer);
+        [EAGLContext setCurrentContext:sself.renderContext];
         
-        if ( [_delegate respondsToSelector:@selector(createBuffers:)] ) {
-            [_delegate createBuffers:rect];
+        GLuint framebuffer ;
+        glGenFramebuffers(1, &framebuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, framebuffer);
+        
+        sself.framebuffer = framebuffer;
+        
+        if ( [sself.delegate respondsToSelector:@selector(createBuffers:)] ) {
+            [sself.delegate createBuffers:rect];
         }
         
         GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
         
-        if ( _log ) {
+        if ( sself.log ) {
             if ( status == GL_FRAMEBUFFER_COMPLETE ) {
                 NSLog(@"framebuffer complete");
             }
@@ -160,34 +167,37 @@
         CGFloat width = self.frame.size.width * [UIScreen mainScreen].scale;
         CGFloat height = self.frame.size.height *  [UIScreen mainScreen].scale;
         
+        __typeof__(self) __weak wself = self;
         dispatch_async(self.renderQueue, ^{
-            if ( self.isRenderable && !self.rendering ) {
-                self.rendering = YES;
+            
+            __typeof__(wself) __strong sself = wself;
+            if ( sself.isRenderable && !sself.rendering ) {
+                sself.rendering = YES;
                 
-                [EAGLContext setCurrentContext:self.renderContext];
+                [EAGLContext setCurrentContext:sself.renderContext];
                 
                 glViewport(0, 0, width, height);
-                glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
+                glBindFramebuffer(GL_FRAMEBUFFER, sself.framebuffer);
                 
                 CGRect rect = CGRectMake(0, 0, width, height);
                 
-                if ( [_delegate respondsToSelector:@selector(drawInRect:)] ) {
-                    [_delegate drawInRect:rect];
+                if ( [sself.delegate respondsToSelector:@selector(drawInRect:)] ) {
+                    [sself.delegate drawInRect:rect];
                 }
                 
                 glFlush();
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if ( self.isRenderable ) {
-                        [EAGLContext setCurrentContext:self.mainContext];
-                        glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
+                    if ( sself.isRenderable ) {
+                        [EAGLContext setCurrentContext:sself.mainContext];
+                        glBindRenderbuffer(GL_RENDERBUFFER, sself.renderbuffer);
                         glViewport(0, 0, width, height);
                         
-                        [self.mainContext presentRenderbuffer:_renderbuffer];
+                        [sself.mainContext presentRenderbuffer:sself.renderbuffer];
                         glFlush();
                     }
                     
-                    self.rendering = NO;
+                    sself.rendering = NO;
                 });
             }
         });
