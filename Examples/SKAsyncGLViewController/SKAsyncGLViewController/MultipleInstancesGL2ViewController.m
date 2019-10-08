@@ -9,14 +9,14 @@
 #define boris_random(smallNumber, bigNumber) ((((float)(arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * (bigNumber - smallNumber)) + smallNumber)
 #define SIDE 150.0f
 
-#import "ViewController.h"
-#import "CubeViewController.h"
+#import "MultipleInstancesGL2ViewController.h"
+#import "CubeGL2ViewController.h"
 
-@interface ViewController ()
+@interface MultipleInstancesGL2ViewController ()
 
 @end
 
-@implementation ViewController {
+@implementation MultipleInstancesGL2ViewController {
 }
 
 - (void)viewDidLoad
@@ -29,7 +29,7 @@
 
 - (IBAction)buttonTapped:(id)sender
 {
-    CubeViewController *vc = [CubeViewController new];
+    CubeGL2ViewController *vc = [CubeGL2ViewController new];
     
     vc.floating = YES;
     [self addChildViewController:vc];
@@ -43,6 +43,5 @@
         vc.view.alpha = 1.0f;
     }];
 }
-
 
 @end

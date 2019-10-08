@@ -15,7 +15,7 @@ SKAsyncGLViewController - replacement for classical GLKit stack (GLKView + GLKVi
 
 It renders all your stuff in background GCD-thread and shows result on main thread.
 
-**Now it uses only OpenGLES2**
+**OpenGLES2/OpenGLES3**
 
 ![Screenshot](misc/demo.gif)
 
@@ -33,6 +33,9 @@ Download this repo and drop this files into your project
 
 ### Usage
 After installation, inherit your viewController from SKAsyncGLViewController and implement these methods:
+
+:wrench: Select your API version by returning EAGLRenderingAPI value here (default is kEAGLRenderingAPIOpenGLES3)
+- **- (EAGLRenderingAPI)getApi**
 
 - **- (void)setupGL** 
 

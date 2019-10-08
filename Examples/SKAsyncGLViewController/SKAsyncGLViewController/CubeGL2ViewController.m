@@ -5,7 +5,7 @@
 //  Created by Stephen Kopylov - Home on 27/04/16.
 //  Copyright © 2016 test. All rights reserved.
 //
-#import "CubeViewController.h"
+#import "CubeGL2ViewController.h"
 #import <OpenGLES/ES2/glext.h>
 #import <OpenGLES/ES2/gl.h>
 #import "CC3GLMatrix.h"
@@ -47,7 +47,7 @@ const GLubyte Indices[] = {
     0, 7, 4
 };
 
-@interface CubeViewController ()
+@interface CubeGL2ViewController ()
 
 @property (nonatomic) GLuint positionSlot;
 @property (nonatomic) GLuint colorSlot;
@@ -70,7 +70,7 @@ const GLubyte Indices[] = {
 
 @end
 
-@implementation CubeViewController
+@implementation CubeGL2ViewController
 
 #pragma mark - Lifecycle
 
@@ -214,8 +214,7 @@ const GLubyte Indices[] = {
     [self setupVBOs];
 }
 
-
-- (void)drawGL:(CGRect)rect
+- (void)drawGLInRect:(CGRect)rect
 {
     CC3GLMatrix *projection = [CC3GLMatrix matrix];
     float h = 4.0f * rect.size.height / rect.size.width;
@@ -231,12 +230,6 @@ const GLubyte Indices[] = {
     [modelView rotateBy:CC3VectorMake(_multiplier, _multiplier, 0)];
     glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.glMatrix);
     
-    [super drawGL:rect];
-}
-
-
-- (void)drawGLInRect:(CGRect)rect
-{
     glClearColor(0.f, 0.f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
@@ -274,5 +267,10 @@ const GLubyte Indices[] = {
     }
 }
 
+#pragma mark - SKAsyncGLViewDelegate
+
+-(EAGLRenderingAPI)getApi{
+    return kEAGLRenderingAPIOpenGLES2;
+}
 
 @end

@@ -17,6 +17,8 @@
 
 - (void)drawInRect:(CGRect)rect;
 
+- (EAGLRenderingAPI)getApi;
+
 @end
 
 @interface SKAsyncGLView : UIView
