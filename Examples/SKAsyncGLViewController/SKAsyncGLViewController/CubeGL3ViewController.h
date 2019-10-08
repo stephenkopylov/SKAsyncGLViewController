@@ -8,7 +8,7 @@
 
 #import "SKAntialiasedAsyncGLViewController.h"
 
-@interface CubeViewController : SKAntialiasedAsyncGLViewController
+@interface CubeGL3ViewController : SKAntialiasedAsyncGLViewController
 
 @property (nonatomic) BOOL floating;
 

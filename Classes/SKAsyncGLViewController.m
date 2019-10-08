@@ -7,8 +7,11 @@
 //
 
 #import "SKAsyncGLViewController.h"
-#import <OpenGLES/ES2/glext.h>
 #import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES2/glext.h>
+
+#import <OpenGLES/ES3/gl.h>
+#import <OpenGLES/ES3/glext.h>
 
 @interface SKAsyncGLViewController ()
 @property (atomic) GLuint renderbuffer;

@@ -7,6 +7,8 @@
 //
 
 #import "SKAsyncGLView.h"
+#import <OpenGLES/ES3/gl.h>
+#import <OpenGLES/ES3/glext.h>
 
 @interface SKAsyncGLView ()
 @property (nonatomic) BOOL contextsCreated;
@@ -95,7 +97,8 @@
 
 - (void)createContexts
 {
-    self.mainContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    
+    self.mainContext = [[EAGLContext alloc] initWithAPI:[self.delegate getApi]];
     dispatch_async(self.renderQueue, ^{
         self.renderContext = [[EAGLContext alloc] initWithAPI:self.mainContext.API sharegroup:self.mainContext.sharegroup];
         dispatch_async(dispatch_get_main_queue(), ^{

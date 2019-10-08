@@ -20,6 +20,8 @@
 
 - (void)loadView
 {
+    self.api = [self getApi];
+    
     self.view = [SKAsyncGLView new];
     self.view.delegate = self;
 }
@@ -110,6 +112,9 @@
     [self drawGL:rect];
 }
 
+-(EAGLRenderingAPI)getApi{
+    return kEAGLRenderingAPIOpenGLES3;
+}
 
 - (void)setupGL:(CGRect)rect
 {
