@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SKAsyncGLViewController"
-  s.version      = "0.1.9"
-  s.summary      = "Asynchronious OpenGL (OpenGLSE2) stack"
+  s.version      = "1.0"
+  s.summary      = "Asynchronious OpenGL (OpenGLSE2/OpenGLSE3) stack"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
