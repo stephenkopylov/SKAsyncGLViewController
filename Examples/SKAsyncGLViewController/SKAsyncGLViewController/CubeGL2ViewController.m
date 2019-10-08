@@ -268,6 +268,8 @@ const GLubyte Indices[] = {
     }
 }
 
+#pragma mark - SKAsyncGLViewDelegate
+
 -(EAGLRenderingAPI)getApi{
     return kEAGLRenderingAPIOpenGLES2;
 }
