@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		6A00F00F1CD0C26700DF53D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A00F00E1CD0C26700DF53D2 /* main.m */; };
 		6A00F0121CD0C26700DF53D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A00F0111CD0C26700DF53D2 /* AppDelegate.m */; };
-		6A00F0151CD0C26700DF53D2 /* CubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A00F0141CD0C26700DF53D2 /* CubeViewController.m */; };
+		6A00F0151CD0C26700DF53D2 /* CubeGL2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A00F0141CD0C26700DF53D2 /* CubeGL2ViewController.m */; };
 		6A00F0181CD0C26700DF53D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A00F0161CD0C26700DF53D2 /* Main.storyboard */; };
 		6A00F01A1CD0C26700DF53D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A00F0191CD0C26700DF53D2 /* Assets.xcassets */; };
 		6A00F01D1CD0C26700DF53D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A00F01B1CD0C26700DF53D2 /* LaunchScreen.storyboard */; };
-		6A00F0311CD1201300DF53D2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A00F0301CD1201300DF53D2 /* ViewController.m */; };
+		6A00F0311CD1201300DF53D2 /* MultipleInstancesGL2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A00F0301CD1201300DF53D2 /* MultipleInstancesGL2ViewController.m */; };
 		6A71C29A1CD13980004320A9 /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 6A71C2991CD13980004320A9 /* SimpleVertex.glsl */; };
 		6A71C29C1CD13A4F004320A9 /* SimpleFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 6A71C29B1CD13A4F004320A9 /* SimpleFragment.glsl */; };
 		6A71C2A91CD13E9B004320A9 /* CC3Foundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2A01CD13E9B004320A9 /* CC3Foundation.m */; };
@@ -33,14 +33,14 @@
 		6A00F00E1CD0C26700DF53D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A00F0101CD0C26700DF53D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6A00F0111CD0C26700DF53D2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6A00F0131CD0C26700DF53D2 /* CubeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeViewController.h; sourceTree = "<group>"; };
-		6A00F0141CD0C26700DF53D2 /* CubeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeViewController.m; sourceTree = "<group>"; };
+		6A00F0131CD0C26700DF53D2 /* CubeGL2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeGL2ViewController.h; sourceTree = "<group>"; };
+		6A00F0141CD0C26700DF53D2 /* CubeGL2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeGL2ViewController.m; sourceTree = "<group>"; };
 		6A00F0171CD0C26700DF53D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6A00F0191CD0C26700DF53D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A00F01C1CD0C26700DF53D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A00F01E1CD0C26700DF53D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A00F02F1CD1201300DF53D2 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6A00F0301CD1201300DF53D2 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6A00F02F1CD1201300DF53D2 /* MultipleInstancesGL2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipleInstancesGL2ViewController.h; sourceTree = "<group>"; };
+		6A00F0301CD1201300DF53D2 /* MultipleInstancesGL2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipleInstancesGL2ViewController.m; sourceTree = "<group>"; };
 		6A71C2991CD13980004320A9 /* SimpleVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertex.glsl; sourceTree = "<group>"; };
 		6A71C29B1CD13A4F004320A9 /* SimpleFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleFragment.glsl; sourceTree = "<group>"; };
 		6A71C29F1CD13E9B004320A9 /* CC3Foundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Foundation.h; sourceTree = "<group>"; };
@@ -171,10 +171,10 @@
 			children = (
 				6A71C2B51CD21489004320A9 /* BasicViewController.h */,
 				6A71C2B61CD21489004320A9 /* BasicViewController.m */,
-				6A00F0131CD0C26700DF53D2 /* CubeViewController.h */,
-				6A00F0141CD0C26700DF53D2 /* CubeViewController.m */,
-				6A00F02F1CD1201300DF53D2 /* ViewController.h */,
-				6A00F0301CD1201300DF53D2 /* ViewController.m */,
+				6A00F0131CD0C26700DF53D2 /* CubeGL2ViewController.h */,
+				6A00F0141CD0C26700DF53D2 /* CubeGL2ViewController.m */,
+				6A00F02F1CD1201300DF53D2 /* MultipleInstancesGL2ViewController.h */,
+				6A00F0301CD1201300DF53D2 /* MultipleInstancesGL2ViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -231,6 +231,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -313,11 +314,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A71C2AB1CD13E9B004320A9 /* CC3Kazmath.c in Sources */,
-				6A00F0311CD1201300DF53D2 /* ViewController.m in Sources */,
+				6A00F0311CD1201300DF53D2 /* MultipleInstancesGL2ViewController.m in Sources */,
 				6A71C2B31CD21039004320A9 /* SKBaseAsyncGLViewController.m in Sources */,
 				6A71C2B21CD21039004320A9 /* SKAsyncGLView.m in Sources */,
 				7916229A1E80144400D14255 /* SKAntialiasedAsyncGLViewController.m in Sources */,
-				6A00F0151CD0C26700DF53D2 /* CubeViewController.m in Sources */,
+				6A00F0151CD0C26700DF53D2 /* CubeGL2ViewController.m in Sources */,
 				6A00F0121CD0C26700DF53D2 /* AppDelegate.m in Sources */,
 				6A71C2A91CD13E9B004320A9 /* CC3Foundation.m in Sources */,
 				6A00F00F1CD0C26700DF53D2 /* main.m in Sources */,

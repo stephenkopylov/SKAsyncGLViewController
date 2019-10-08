@@ -5,7 +5,7 @@
 //  Created by Stephen Kopylov - Home on 27/04/16.
 //  Copyright © 2016 test. All rights reserved.
 //
-#import "CubeViewController.h"
+#import "CubeGL2ViewController.h"
 #import <OpenGLES/ES2/glext.h>
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES3/gl.h>
@@ -48,7 +48,7 @@ const GLubyte Indices[] = {
     0, 7, 4
 };
 
-@interface CubeViewController ()
+@interface CubeGL2ViewController ()
 
 @property (nonatomic) GLuint positionSlot;
 @property (nonatomic) GLuint colorSlot;
@@ -71,7 +71,7 @@ const GLubyte Indices[] = {
 
 @end
 
-@implementation CubeViewController
+@implementation CubeGL2ViewController
 
 #pragma mark - Lifecycle
 
@@ -275,5 +275,8 @@ const GLubyte Indices[] = {
     }
 }
 
+-(EAGLRenderingAPI)getApi{
+    return kEAGLRenderingAPIOpenGLES2;
+}
 
 @end

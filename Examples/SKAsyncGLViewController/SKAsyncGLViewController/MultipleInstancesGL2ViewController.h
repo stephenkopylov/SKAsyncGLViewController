@@ -6,10 +6,8 @@
 //  Copyright © 2016 test. All rights reserved.
 //
 
-#import "SKAntialiasedAsyncGLViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface CubeViewController : SKAntialiasedAsyncGLViewController
-
-@property (nonatomic) BOOL floating;
+@interface MultipleInstancesGL2ViewController : UIViewController
 
 @end
