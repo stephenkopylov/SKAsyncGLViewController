@@ -19,6 +19,8 @@
 
 @property (nonatomic) BOOL paused;
 
+@property (nonatomic) EAGLRenderingAPI api;
+
 - (void)setupGL:(CGRect)rect;
 
 - (void)drawGL:(CGRect)rect;

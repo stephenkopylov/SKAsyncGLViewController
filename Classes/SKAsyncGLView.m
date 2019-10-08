@@ -7,6 +7,8 @@
 //
 
 #import "SKAsyncGLView.h"
+#import <OpenGLES/ES3/gl.h>
+#import <OpenGLES/ES3/glext.h>
 
 @interface SKAsyncGLView ()
 @property (nonatomic) BOOL contextsCreated;

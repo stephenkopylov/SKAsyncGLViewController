@@ -20,6 +20,8 @@
 
 - (void)loadView
 {
+    self.api = [self getApi];
+    
     self.view = [SKAsyncGLView new];
     self.view.delegate = self;
 }

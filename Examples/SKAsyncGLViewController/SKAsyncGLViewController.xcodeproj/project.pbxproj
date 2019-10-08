@@ -25,6 +25,11 @@
 		6A71C2B71CD21489004320A9 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71C2B61CD21489004320A9 /* BasicViewController.m */; };
 		7916229A1E80144400D14255 /* SKAntialiasedAsyncGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791622991E80144400D14255 /* SKAntialiasedAsyncGLViewController.m */; };
 		7958C68C1F3E0CC0002AC1D0 /* SKAsyncGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958C68B1F3E0CC0002AC1D0 /* SKAsyncGLViewController.m */; };
+		79C6BA6B234CC54B00C4C502 /* MultipleInstancesGL3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C6BA6A234CC54B00C4C502 /* MultipleInstancesGL3ViewController.m */; };
+		79C6BA6E234CC58700C4C502 /* CubeGL3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C6BA6D234CC58700C4C502 /* CubeGL3ViewController.m */; };
+		79C6BA71234CC7E300C4C502 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 79C6BA6F234CC7E300C4C502 /* Shader.vsh */; };
+		79C6BA72234CC7E300C4C502 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 79C6BA70234CC7E300C4C502 /* Shader.fsh */; };
+		79C6BA74234CC8E500C4C502 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C6BA73234CC8E500C4C502 /* OpenGLES.framework */; };
 		C3987DB84930E9B72C7DEEFE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF55AAE6227749C3F5551629 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +69,13 @@
 		791622991E80144400D14255 /* SKAntialiasedAsyncGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAntialiasedAsyncGLViewController.m; sourceTree = "<group>"; };
 		7958C68A1F3E0CC0002AC1D0 /* SKAsyncGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAsyncGLViewController.h; sourceTree = "<group>"; };
 		7958C68B1F3E0CC0002AC1D0 /* SKAsyncGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAsyncGLViewController.m; sourceTree = "<group>"; };
+		79C6BA69234CC54B00C4C502 /* MultipleInstancesGL3ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleInstancesGL3ViewController.h; sourceTree = "<group>"; };
+		79C6BA6A234CC54B00C4C502 /* MultipleInstancesGL3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleInstancesGL3ViewController.m; sourceTree = "<group>"; };
+		79C6BA6C234CC58700C4C502 /* CubeGL3ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeGL3ViewController.h; sourceTree = "<group>"; };
+		79C6BA6D234CC58700C4C502 /* CubeGL3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeGL3ViewController.m; sourceTree = "<group>"; };
+		79C6BA6F234CC7E300C4C502 /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		79C6BA70234CC7E300C4C502 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
+		79C6BA73234CC8E500C4C502 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF55AAE6227749C3F5551629 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D67F41E571512E67556CC63B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79C6BA74234CC8E500C4C502 /* OpenGLES.framework in Frameworks */,
 				C3987DB84930E9B72C7DEEFE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +96,7 @@
 		1D86BCC062DC133D8491B025 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79C6BA73234CC8E500C4C502 /* OpenGLES.framework */,
 				BF55AAE6227749C3F5551629 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -134,6 +148,8 @@
 		6A71C2981CD13972004320A9 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				79C6BA70234CC7E300C4C502 /* Shader.fsh */,
+				79C6BA6F234CC7E300C4C502 /* Shader.vsh */,
 				6A71C2991CD13980004320A9 /* SimpleVertex.glsl */,
 				6A71C29B1CD13A4F004320A9 /* SimpleFragment.glsl */,
 				6A71C29F1CD13E9B004320A9 /* CC3Foundation.h */,
@@ -173,8 +189,12 @@
 				6A71C2B61CD21489004320A9 /* BasicViewController.m */,
 				6A00F0131CD0C26700DF53D2 /* CubeGL2ViewController.h */,
 				6A00F0141CD0C26700DF53D2 /* CubeGL2ViewController.m */,
+				79C6BA6C234CC58700C4C502 /* CubeGL3ViewController.h */,
+				79C6BA6D234CC58700C4C502 /* CubeGL3ViewController.m */,
 				6A00F02F1CD1201300DF53D2 /* MultipleInstancesGL2ViewController.h */,
 				6A00F0301CD1201300DF53D2 /* MultipleInstancesGL2ViewController.m */,
+				79C6BA69234CC54B00C4C502 /* MultipleInstancesGL3ViewController.h */,
+				79C6BA6A234CC54B00C4C502 /* MultipleInstancesGL3ViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -252,8 +272,10 @@
 			files = (
 				6A00F01D1CD0C26700DF53D2 /* LaunchScreen.storyboard in Resources */,
 				6A71C29A1CD13980004320A9 /* SimpleVertex.glsl in Resources */,
+				79C6BA71234CC7E300C4C502 /* Shader.vsh in Resources */,
 				6A00F01A1CD0C26700DF53D2 /* Assets.xcassets in Resources */,
 				6A00F0181CD0C26700DF53D2 /* Main.storyboard in Resources */,
+				79C6BA72234CC7E300C4C502 /* Shader.fsh in Resources */,
 				6A71C29C1CD13A4F004320A9 /* SimpleFragment.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,11 +339,13 @@
 				6A00F0311CD1201300DF53D2 /* MultipleInstancesGL2ViewController.m in Sources */,
 				6A71C2B31CD21039004320A9 /* SKBaseAsyncGLViewController.m in Sources */,
 				6A71C2B21CD21039004320A9 /* SKAsyncGLView.m in Sources */,
+				79C6BA6B234CC54B00C4C502 /* MultipleInstancesGL3ViewController.m in Sources */,
 				7916229A1E80144400D14255 /* SKAntialiasedAsyncGLViewController.m in Sources */,
 				6A00F0151CD0C26700DF53D2 /* CubeGL2ViewController.m in Sources */,
 				6A00F0121CD0C26700DF53D2 /* AppDelegate.m in Sources */,
 				6A71C2A91CD13E9B004320A9 /* CC3Foundation.m in Sources */,
 				6A00F00F1CD0C26700DF53D2 /* main.m in Sources */,
+				79C6BA6E234CC58700C4C502 /* CubeGL3ViewController.m in Sources */,
 				7958C68C1F3E0CC0002AC1D0 /* SKAsyncGLViewController.m in Sources */,
 				6A71C2AA1CD13E9B004320A9 /* CC3GLMatrix.m in Sources */,
 				6A71C2B71CD21489004320A9 /* BasicViewController.m in Sources */,

@@ -215,8 +215,7 @@ const GLubyte Indices[] = {
     [self setupVBOs];
 }
 
-
-- (void)drawGL:(CGRect)rect
+- (void)drawGLInRect:(CGRect)rect
 {
     CC3GLMatrix *projection = [CC3GLMatrix matrix];
     float h = 4.0f * rect.size.height / rect.size.width;
@@ -232,12 +231,6 @@ const GLubyte Indices[] = {
     [modelView rotateBy:CC3VectorMake(_multiplier, _multiplier, 0)];
     glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.glMatrix);
     
-    [super drawGL:rect];
-}
-
-
-- (void)drawGLInRect:(CGRect)rect
-{
     glClearColor(0.f, 0.f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);

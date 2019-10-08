@@ -88,7 +88,11 @@
     
     glFlush();
     
-    glResolveMultisampleFramebufferAPPLE();
+    if(self.api == kEAGLRenderingAPIOpenGLES2){
+        glResolveMultisampleFramebufferAPPLE();
+    }else{
+        glBlitFramebuffer(0,0,rect.size.width,rect.size.height, 0,0,rect.size.width,rect.size.height, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    }
     
     const GLenum discards[]  = { GL_COLOR_ATTACHMENT0, GL_DEPTH_ATTACHMENT };
     glDiscardFramebufferEXT(GL_READ_FRAMEBUFFER_APPLE, 2, discards);
