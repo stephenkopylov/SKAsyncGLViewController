@@ -19,12 +19,9 @@
 
 @property (nonatomic) BOOL paused;
 
-
 - (void)setupGL:(CGRect)rect;
 
-
 - (void)drawGL:(CGRect)rect;
-
 
 - (void)clearGL;
 

@@ -7,8 +7,11 @@
 //
 
 #import "SKAntialiasedAsyncGLViewController.h"
-#import <OpenGLES/ES2/glext.h>
 #import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES2/glext.h>
+
+#import <OpenGLES/ES3/gl.h>
+#import <OpenGLES/ES3/glext.h>
 
 @interface SKAntialiasedAsyncGLViewController ()
 @property (atomic) GLuint sampleframebuffer;
@@ -111,6 +114,5 @@
         _samplerenderbuffer =  0;
     }
 }
-
 
 @end
