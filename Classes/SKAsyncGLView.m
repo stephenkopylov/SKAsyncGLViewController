@@ -27,6 +27,9 @@ static NSMutableDictionary<NSString*, EAGLSharegroup*> * sharedGroups;
 	return [CAEAGLLayer class];
 }
 
++(void)load{
+	sharedGroups = @{}.mutableCopy;
+}
 
 #pragma mark - lifecycle/ui
 
