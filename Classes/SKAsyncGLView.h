@@ -31,6 +31,7 @@
 @property (nonatomic) BOOL log;
 @property (atomic) BOOL inactive;
 @property (nonatomic) BOOL fullResolutionOnSimulator;
+@property (atomic) BOOL useSharedContextInSameThread;
 
 @property (nonatomic, weak) id<SKAsyncGLViewDelegate> delegate;
 

@@ -18,6 +18,8 @@
 @property (nonatomic) CGFloat contentScale;
 @end
 
+static NSMutableDictionary<NSString*, EAGLSharegroup*> * sharedGroups;
+
 @implementation SKAsyncGLView
 
 + (Class)layerClass
@@ -99,7 +101,20 @@
 - (void)createContexts
 {
 	
-	self.mainContext = [[EAGLContext alloc] initWithAPI:[self.delegate getApi]];
+	if(self.useSharedContextInSameThread){
+		
+		NSString *renderQueueID =  [NSString stringWithUTF8String:dispatch_queue_get_label(self.renderQueue)];
+		
+		if(sharedGroups[renderQueueID]){
+			self.mainContext = [[EAGLContext alloc] initWithAPI:[self.delegate getApi] sharegroup:sharedGroups[renderQueueID]];
+		}else{
+			self.mainContext = [[EAGLContext alloc] initWithAPI:[self.delegate getApi]];
+			sharedGroups[renderQueueID] = self.mainContext.sharegroup;
+		}
+	}else{
+		self.mainContext = [[EAGLContext alloc] initWithAPI:[self.delegate getApi]];
+	}
+	
 	dispatch_async(self.renderQueue, ^{
 		self.renderContext = [[EAGLContext alloc] initWithAPI:self.mainContext.API sharegroup:self.mainContext.sharegroup];
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -107,7 +122,6 @@
 		});
 	});
 }
-
 
 - (void)createBuffers
 {
