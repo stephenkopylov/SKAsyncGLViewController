@@ -1,1 +1,5 @@
-pod "RDRIntermediateTarget"
+platform :ios, '10.0'
+
+target 'SKAsyncGLViewController' do
+    pod "RDRIntermediateTarget"
+end
